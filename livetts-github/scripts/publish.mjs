@@ -64,9 +64,9 @@ export async function publicationFiles() {
     await add(relative);
   }
   const version = crypto.createHash('sha256');
-  for (const relative of ['data.js', 'site.config.js', 'assets/app.js', 'assets/style.css']) version.update(files.get(PREFIX + relative));
+  for (const relative of ['data.js', 'site.config.js', 'assets/app.js', 'assets/style.css', 'assets/sample-panel.css']) version.update(files.get(PREFIX + relative));
   const digest = version.digest('hex').slice(0, 12);
-  const index = files.get(PREFIX + 'index.html').toString().replace(/((?:src|href)="\.\/(?:data\.js|site\.config\.js|assets\/app\.js|assets\/style\.css))(?:\?v=[^"]*)?"/g, `$1?v=${digest}"`);
+  const index = files.get(PREFIX + 'index.html').toString().replace(/((?:src|href)="\.\/(?:data\.js|site\.config\.js|assets\/app\.js|assets\/style\.css|assets\/sample-panel\.css))(?:\?v=[^"]*)?"/g, `$1?v=${digest}"`);
   files.set(PREFIX + 'index.html', Buffer.from(index));
   files.set('README.md', files.get(PREFIX + 'deployment/REPOSITORY_README.md'));
   return files;

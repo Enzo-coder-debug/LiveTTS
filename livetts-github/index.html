@@ -1,99 +1,459 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#07090f">
-  <meta name="description" content="LiveTTS 生成式语音基础模型：试听多情感、多语种、地方方言与长文本语音样例。">
-  <title>LiveTTS · 生成式语音基础模型</title>
-  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./assets/style.css?v=876a33a17cf6">
-  <script src="./site.config.js?v=876a33a17cf6" defer></script>
-  <script src="./data.js?v=876a33a17cf6" defer></script>
-  <script src="./assets/app.js?v=876a33a17cf6" defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LiveTTS · 生成式语音基础模型</title>
+<link rel="stylesheet" href="./assets/style.css?v=84499a2a343b">
+<link rel="stylesheet" href="./assets/sample-panel.css?v=84499a2a343b">
+<link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+<script src="./site.config.js?v=84499a2a343b" defer></script>
+<script src="./data.js?v=84499a2a343b" defer></script>
+<script src="./assets/app.js?v=84499a2a343b" defer></script>
 </head>
-<body id="top">
-  <a class="skip-link" href="#demo" data-i18n="skip">跳到音频示例</a>
-  <div class="glow glow-1" aria-hidden="true"></div>
-  <div class="glow glow-2" aria-hidden="true"></div>
-  <div class="glow glow-3" aria-hidden="true"></div>
-  <header>
-    <div class="wrap nav">
-      <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"></span>LiveTTS</a>
-      <nav class="nav-links" aria-label="Main navigation">
-        <a href="#demo" data-i18n="navDemo">效果展示</a>
-        <a href="#capability" data-i18n="navCapability">核心能力</a>
-        <a href="#eval" data-i18n="navEval">业务评测</a>
-        <a href="#start" data-i18n="navStart">快速开始</a>
-      </nav>
-      <button class="language-switch" id="language-switch" type="button" aria-label="Switch to English">EN</button>
+<body>
+
+<div class="glow glow-1"></div>
+<div class="glow glow-2"></div>
+<div class="glow glow-3"></div>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand"><span class="brand-mark"></span>LiveTTS</div>
+    <nav class="nav-links">
+      <a href="#capability">核心能力</a>
+      <a href="#matrix">能力矩阵</a>
+      <a href="#eval">业务评测</a>
+      <a href="#demo">效果展示</a>
+      <a href="#start">快速开始</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="wrap hero">
+  <div class="badge"><span class="dot"></span><span data-copy="badge">面向真实产品环境的生成式语音基础模型</span></div>
+  <h1><span data-copy="heroFirst">让每一句话</span><br><span data-copy="heroSecond">都有真人的温度</span></h1>
+  <p class="hero-sub">
+    <span data-copy="heroIntro">输入一段文本，输出自然人声。</span><strong data-copy="heroEmphasis">3–15 秒完成音色克隆</strong><span data-copy="heroEnd">，一个音色即可切换语种、方言、情绪与语速——
+    不只是能听，而是能上线、能扩展、能真正提升业务生产力的语音底座。</span>
+  </p>
+  <div class="cta-row">
+    <a class="btn btn-primary" href="#demo">▶ 观看效果演示</a>
+    <a class="btn btn-ghost" href="#start">快速接入 →</a>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="stat-num">3–15s</div><div class="stat-label">一句话音色克隆</div></div>
+    <div class="stat"><div class="stat-num">10 种</div><div class="stat-label">地方方言全解耦</div></div>
+    <div class="stat"><div class="stat-num">8+ 种</div><div class="stat-label">外语，口音重点优化</div></div>
+    <div class="stat"><div class="stat-num">11+ 种</div><div class="stat-label">情感风格指令</div></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 能力 -->
+<section id="capability">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-tag">Capability</div>
+      <h2 data-copy="capabilityTitle">八项核心能力，覆盖真实业务全链路</h2>
+      <p class="sec-desc" data-copy="capabilityDescription">从零样本克隆到篇章级长音频，从情感表达到副语言细节，LiveTTS 把「像真人」拆解成可控制、可复用的能力模块。</p>
     </div>
-  </header>
-  <main>
-    <div class="wrap hero">
-      <div class="badge"><span class="dot" aria-hidden="true"></span><span data-i18n="badge">面向真实产品环境的生成式语音基础模型</span></div>
-      <h1><span data-i18n="heroFirst">让每一句话</span><br><span data-i18n="heroSecond">都有真人的温度</span></h1>
-      <p class="hero-sub"><span data-i18n="heroIntro">输入一段文本，输出自然人声。</span><strong data-i18n="heroEmphasis">用 3–15 秒参考音频注册音色，</strong><span data-i18n="heroEnd">让同一个声音跨越语种、方言与情绪。</span></p>
-      <div class="cta-row">
-        <a class="btn btn-primary" href="#demo" data-i18n="listen">▶ 试听音频示例</a>
-        <a class="btn btn-ghost" href="#start" data-i18n="getStarted">快速接入 →</a>
+
+    <div class="grid g3">
+      <div class="card">
+        <div class="card-icon">🎙️</div>
+        <h3>一句话音色克隆</h3>
+        <p>音色注册仅需 <strong>3–15 秒</strong>音频，即可用该音色合成任意文本。提供 Accent 增强推理（保留韵律口音）与纯声纹推理（轻量稳定）两种模式。</p>
       </div>
-      <div class="stats">
-        <div class="stat"><div class="stat-num" id="stat-audio">—</div><div class="stat-label" data-i18n="statAudio">真实合成音频</div></div>
-        <div class="stat"><div class="stat-num" id="stat-emotions">—</div><div class="stat-label" data-i18n="statEmotions">情感指令示例</div></div>
-        <div class="stat"><div class="stat-num" id="stat-dialects">—</div><div class="stat-label" data-i18n="statDialects">地方方言示例</div></div>
-        <div class="stat"><div class="stat-num" id="stat-languages">—</div><div class="stat-label" data-i18n="statLanguages">外语示例</div></div>
+      <div class="card">
+        <div class="card-icon">💎</div>
+        <h3>精品音色定制</h3>
+        <p>录制 <strong>30 分钟–5 小时</strong>数据进行 LoRA SFT，打造超拟人精品音色。数据越丰富，模型对不同文本的演绎还原度越高。</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎭</div>
+        <h3>多情感控制</h3>
+        <p>通过 Instruct 指定情感风格，已支持高兴、悲伤、愤怒、恐惧、惊讶、厌恶、担忧、温暖、期待、着急、<strong>热情直播、客服施压</strong>等 11+ 种。</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🗺️</div>
+        <h3>方言能力</h3>
+        <p>支持 <strong>10 种地方方言</strong>：东北话、河南话、闽南话、天津话、四川话、陕西话、粤语、上海话、济南话、北京话。</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌍</div>
+        <h3>多语种能力</h3>
+        <p>支持 <strong>8+ 种外语</strong>：英语、德语、法语、西班牙语、日语、荷兰语、阿拉伯语、韩语、印尼语。<strong>口音问题重点优化</strong>。</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">💬</div>
+        <h3>副语言 AudioTag</h3>
+        <p>在文本中直接插入 <span class="inline-code">&lt;laughter&gt;</span> 大笑、<span class="inline-code">&lt;sigh&gt;</span> 叹气、<span class="inline-code">&lt;cough&gt;</span> 咳嗽、<span class="inline-code">&lt;throat&gt;</span> 清嗓子等非语言发声。</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔤</div>
+        <h3>声韵母拼读</h3>
+        <p>面向中文教学与评测，支持声母、韵母、整体认读音节精确发音，如「中」可精确指定为 <span class="inline-code">zh ōng → zhōng</span>。</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎵</div>
+        <h3>SVC 唱歌与哼唱</h3>
+        <p>支持歌声转换（Singing Voice Conversion）与简单哼唱，可将目标音色迁移到演唱内容上。</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📚</div>
+        <h3>长上下文能力</h3>
+        <p>面向篇章级内容合成：<strong>直播带货、播客、有声小说</strong>等，长时间连续合成仍保持音色与情绪稳定。</p>
       </div>
     </div>
-    <div class="divider"></div>
-    <section id="demo">
-      <div class="wrap">
-        <div class="sec-head">
-          <div class="sec-tag">Audio Showcase</div>
-          <h2 data-i18n="demoTitle">听见 LiveTTS 的不同表达</h2>
-          <p class="sec-desc" data-i18n="demoDescription">同一指定音色，直接试听。情感文案分别设计，语种与方言均显式指定。</p>
-        </div>
-        <div class="sample-toolbar">
-          <div class="filters" id="sample-filters" role="group" aria-label="Audio categories"></div>
-          <label class="search-label"><span class="sr-only" data-i18n="search">搜索音频或文本</span><input id="sample-search" type="search" placeholder="搜索音频或文本" autocomplete="off"></label>
-        </div>
-        <p class="sample-status" id="sample-status" role="status"></p>
-        <div id="sample-list"></div>
-        <noscript><p class="callout">请启用 JavaScript 试听分类音频，或访问 <a href="./assets/audio/GENERATION.md">音频文件清单</a>。Enable JavaScript to browse the audio showcase.</p></noscript>
-        <p class="sample-note" data-i18n="sampleNote">合成语音 · 指定预置音色 · 请求版本 2.8.1 · 24 kHz / PCM16。本组不是零样本克隆对照，亦不代表独立评测结论。</p>
+
+    <pre><code># 副语言标签用法示例
+他听完愣了一下，&lt;laughter&gt;然后摇了摇头&lt;sigh&gt;。</code></pre>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 解耦 -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-tag">Design</div>
+      <h2>设计理念：全能力解耦</h2>
+      <p class="sec-desc">每个音色无需额外录制数据，即可实现语种、方言、情绪、语速的独立控制。</p>
+    </div>
+
+    <div class="grid g2">
+      <div class="card">
+        <div class="card-icon">✨</div>
+        <h3>能力普惠</h3>
+        <p>任意一个音色都能说多语种、多方言，并支持多情绪与语速调节，无需为每种能力单独录制模型。</p>
       </div>
-    </section>
-    <div class="divider"></div>
-    <section id="capability">
-      <div class="wrap">
-        <div class="sec-head"><div class="sec-tag">Capability</div><h2 data-i18n="capabilityTitle">从音色到表达，八项核心能力</h2><p class="sec-desc" data-i18n="capabilityDescription">从零样本克隆到篇章级语音，把自然表达变成可控制、可复用的能力。</p></div>
-        <div class="grid g3" id="capability-grid"></div>
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <h3>风格不漂移</h3>
+        <p>切换方言或外语时，仍保持原始音色的韵律特征与人物风格，不会「换了个人」。</p>
       </div>
-    </section>
-    <div class="divider"></div>
-    <section id="eval">
-      <div class="wrap">
-        <div class="sec-head"><div class="sec-tag">Evaluation</div><h2 data-i18n="evalTitle">业务应用与内部听评</h2><p class="sec-desc" data-i18n="evalDescription">保留团队原稿中的历史版本结果；不代表当前版本的独立榜单排名。</p></div>
-        <div id="evaluation-list"></div>
-        <button class="btn btn-ghost" id="export-results" type="button" data-i18n="exportResults">下载完整评测数据 CSV ↓</button>
+    </div>
+
+    <div class="callout">
+      <strong>这是与同类方案最本质的差异。</strong>多数竞品的方言与指令控制能力只绑定在少数录制音色上，扩展成本极高；LiveTTS 从架构层把能力与音色解绑。
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 能力矩阵 -->
+<section id="matrix">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-tag">Benchmark</div>
+      <h2>能力矩阵与行业对比</h2>
+      <p class="sec-desc">横向对比 Minimax、11Labs、Qwen3-TTS、豆包 TTS2.0 四家主流方案。</p>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>能力项</th>
+            <th>Minimax</th>
+            <th>11Labs</th>
+            <th>Qwen3-TTS</th>
+            <th>豆包 TTS2.0</th>
+            <th class="col-hl">LiveTTS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Zero-shot 克隆</strong></td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td class="col-hl">✅</td></tr>
+          <tr><td><strong>情感控制</strong></td><td>✅</td><td>❌</td><td>✅</td><td>✅</td><td class="col-hl">✅</td></tr>
+          <tr><td><strong>AudioTag 副语言</strong></td><td>✅</td><td>✅</td><td>❌</td><td>❌</td><td class="col-hl">✅</td></tr>
+          <tr><td><strong>拼音能力</strong></td><td>❌</td><td>❌</td><td>❌</td><td>❌</td><td class="col-hl">✅</td></tr>
+          <tr><td><strong>方言</strong></td><td>❌</td><td>❌</td><td>⚠️ 未解耦</td><td>⚠️ 解耦差</td><td class="col-hl">✅ 全解耦</td></tr>
+          <tr><td><strong>小语种</strong></td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td class="col-hl">✅</td></tr>
+          <tr><td><strong>指令控制</strong></td><td>❌</td><td>✅</td><td>⚠️ 未解耦</td><td>✅</td><td class="col-hl">✅ 支持</td></tr>
+          <tr><td><strong>捏声音</strong></td><td>✅</td><td>✅</td><td>✅</td><td>❌</td><td class="col-hl">🔜 打造中</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      <strong>读表结论：</strong>在「拼音能力」「AudioTag」「方言解耦」三项上，LiveTTS 是目前表格中唯一全部达成的方案。
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 评测 -->
+<section id="eval">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-tag">Evaluation</div>
+      <h2 data-copy="evalTitle">业务应用与盲评结果</h2>
+      <p class="sec-desc" data-copy="evalDescription">在真实业务场景中与真人录音、主流竞品做对照评测。</p>
+    </div>
+
+    <div class="callout callout-note" style="margin-bottom:26px">
+      <strong>评测方法论说明：</strong>生成式语音的主观体验与 WER 并不相关，以下结论均基于人工盲评 / MOS / GSB 等主观评测，而非仅看识别错误率。
+    </div>
+
+    <!-- 5.1 -->
+    <div class="eval-card">
+      <div class="eval-title"><h3>智能化营销（外呼）</h3><span class="tag">对比真人录音</span></div>
+      <p class="eval-sub">挂断率越低越好，单位 %</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>批次</th><th>指标</th><th>真人录音</th><th>TTS</th><th>差值</th></tr></thead>
+          <tbody>
+            <tr><td>第一批</td><td>10 秒挂断率</td><td class="num">16.03</td><td class="num">17.02</td><td class="num down">+0.99</td></tr>
+            <tr><td>第一批</td><td>30 秒挂断率</td><td class="num">63.71</td><td class="num">66.41</td><td class="num down">+2.70</td></tr>
+            <tr><td>第一批</td><td>60 秒挂断率</td><td class="num">84.01</td><td class="num">85.06</td><td class="num down">+1.05</td></tr>
+            <tr><td>第一批</td><td>120 秒挂断率</td><td class="num">95.36</td><td class="num up">93.15</td><td class="num up">-2.21</td></tr>
+            <tr><td>第二批</td><td>10 秒挂断率</td><td class="num">16.78</td><td class="num up">15.28</td><td class="num up">-1.50</td></tr>
+            <tr><td>第二批</td><td>30 秒挂断率</td><td class="num">58.96</td><td class="num up">57.81</td><td class="num up">-1.15</td></tr>
+            <tr><td>第二批</td><td>60 秒挂断率</td><td class="num">84.04</td><td class="num">84.48</td><td class="num down">+0.44</td></tr>
+            <tr><td>第二批</td><td>120 秒挂断率</td><td class="num">94.20</td><td class="num">95.49</td><td class="num down">+1.29</td></tr>
+          </tbody>
+        </table>
       </div>
-    </section>
-    <div class="divider"></div>
-    <section id="start">
-      <div class="wrap">
-        <div class="sec-head"><div class="sec-tag">Get Started</div><h2 data-i18n="startTitle">让声音进入你的产品</h2><p class="sec-desc" data-i18n="startDescription">已有 API 可供接入评估。音色注册与真实合成通过授权服务完成，密钥仅保留在服务端。</p></div>
-        <div class="steps" id="integration-steps"></div>
-        <div class="link-list resource-links">
-          <a class="link-item" id="repository-link" hidden><span>GitHub</span><span data-i18n="repository">项目与示例</span><span class="arrow" aria-hidden="true">↗</span></a>
-          <a class="link-item" id="space-link" hidden><span>Hugging Face</span><span data-i18n="space">静态体验预览</span><span class="arrow" aria-hidden="true">↗</span></a>
-          <a class="link-item" href="./MODEL_CARD.md"><span data-i18n="modelCard">模型能力与使用说明</span><span class="arrow" aria-hidden="true">↗</span></a>
-          <a class="link-item" href="./assets/audio/GENERATION.md"><span data-i18n="audioManifest">音频清单与生成记录</span><span class="arrow" aria-hidden="true">↗</span></a>
-          <a class="link-item" id="contact-link" hidden><span data-i18n="contact">联系团队</span><span class="arrow" aria-hidden="true">↗</span></a>
-        </div>
+      <div class="callout">TTS 与真人录音的挂断率差距已收窄到 <strong>1–2 个百分点以内</strong>，第二批在 10 秒、30 秒挂断率上甚至优于真人录音——说明用户在前 30 秒内基本听不出「非真人」。</div>
+    </div>
+
+    <!-- GSB -->
+    <div class="eval-card">
+      <div class="eval-title"><h3>GSB 盲评</h3><span class="tag">5 个行业 · 16 个音色</span></div>
+      <p class="eval-sub">打乱编码盲评，Group1 收回 15 份、Group2 收回 13 份评估</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>组别</th><th>对比模型</th><th class="col-hl">LiveTTS-ZERO</th><th>竞品</th></tr></thead>
+          <tbody>
+            <tr><td>Group1</td><td>Minimax Speech 2.8HD / 11Labs V3</td><td class="col-hl"><strong>53.25%</strong></td><td>13.01% / 13.01%</td></tr>
+            <tr><td>Group2</td><td>豆包 TTS2.0 / Qwen3-TTS</td><td class="col-hl"><strong>47.03%</strong></td><td>20.55% / 8.22%</td></tr>
+          </tbody>
+        </table>
       </div>
-    </section>
-  </main>
-  <footer><div class="wrap"><div class="f-brand">LiveTTS Developer Team · JD</div><p data-i18n="responsible">仅使用已获授权的音色与录音，适当标识合成语音，不冒用身份或误导听众。</p></div></footer>
-  <div id="toast" role="status" hidden></div>
+    </div>
+
+    <!-- 数字人 -->
+    <div class="eval-card">
+      <div class="eval-title"><h3>数字人直播</h3><span class="tag">vs Minimax Speech 2.6HD</span></div>
+      <p class="eval-sub">10 个直播片段、17 人参与评分</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>维度</th><th class="col-hl">LiveTTS-ZERO V2.5.2</th><th>Minimax Speech 2.6HD</th></tr></thead>
+          <tbody>
+            <tr><td>发音准确性</td><td class="col-hl num"><strong>0.82</strong></td><td class="num">0.62</td></tr>
+            <tr><td>流畅性</td><td class="col-hl num"><strong>0.87</strong></td><td class="num">0.74</td></tr>
+            <tr><td>音质清晰度</td><td class="col-hl num"><strong>0.66</strong></td><td class="num">0.59</td></tr>
+            <tr><td>自然度</td><td class="col-hl num"><strong>0.66</strong></td><td class="num">0.29</td></tr>
+            <tr><td>情感表达力</td><td class="col-hl num"><strong>0.58</strong></td><td class="num">0.28</td></tr>
+            <tr><td>音色一致性</td><td class="col-hl num"><strong>0.59</strong></td><td class="num">0.50</td></tr>
+            <tr><td><strong>综合维度</strong></td><td class="col-hl num"><strong>4.17</strong></td><td class="num">2.96</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout"><strong>综合分领先约 41%</strong>，其中自然度（0.66 vs 0.29）与情感表达力（0.58 vs 0.28）接近竞品的两倍。</div>
+    </div>
+
+    <!-- JoyAI -->
+    <div class="eval-card">
+      <div class="eval-title"><h3>JoyAI 通用场景</h3><span class="tag">vs MiniMax Speech 2.8HD</span></div>
+      <p class="eval-sub">六维加权：发音准确性 25% / 流畅性 15% / 音质清晰度 10% / 节奏和韵律 20% / 情感表达 20% / 原始音色保持 10%</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>维度</th><th class="col-hl">JoyAI Zeroshot V2.7.1</th><th>MiniMax Speech 2.8HD</th></tr></thead>
+          <tbody>
+            <tr><td>发音准确性</td><td class="col-hl num">0.82</td><td class="num"><strong>0.88</strong></td></tr>
+            <tr><td>流畅性</td><td class="col-hl num"><strong>0.67</strong></td><td class="num">0.66</td></tr>
+            <tr><td>音质清晰度</td><td class="col-hl num"><strong>0.86</strong></td><td class="num">0.80</td></tr>
+            <tr><td>节奏和韵律</td><td class="col-hl num"><strong>0.66</strong></td><td class="num">0.44</td></tr>
+            <tr><td>情感表达</td><td class="col-hl num"><strong>0.69</strong></td><td class="num">0.38</td></tr>
+            <tr><td>原始音色保持</td><td class="col-hl num">0.76</td><td class="num">0.76</td></tr>
+            <tr><td><strong>总分</strong></td><td class="col-hl num"><strong>0.74</strong></td><td class="num">0.64</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout"><strong>净胜率 Delta GSB = (205 − 96) / (205 + 79 + 96) = 28.7%</strong>，即每 100 条中，LiveTTS 明显更好的比明显更差的平均多出 28.7 条。</div>
+    </div>
+
+    <!-- 方言 -->
+    <div class="eval-card">
+      <div class="eval-title"><h3>JoyInside 方言解耦</h3><span class="tag">vs 豆包 TTS2.0</span></div>
+      <p class="eval-sub">8 个方言 × 每方言 5 个随机音色 × 10 句文本，由 3 名本地人 + 3–7 名可听懂的外包同学评分</p>
+      <div class="callout">在全部 8 个方言上，LiveTTS 的偏好占比均高于豆包 TTS2.0，验证了「任意音色都能说方言且保持原音色」的解耦能力。</div>
+    </div>
+
+    <!-- 文明之影 -->
+    <div class="eval-card">
+      <div class="eval-title"><h3>文明之影（内容创作场景）</h3><span class="tag">vs Minimax Speech 2.8HD</span></div>
+      <p class="eval-sub">长文本内容演绎综合评测</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>维度</th><th class="col-hl">LiveTTS V2.7.3</th><th>Minimax Speech 2.8HD</th></tr></thead>
+          <tbody>
+            <tr><td>发音准确性</td><td class="col-hl num"><strong>0.8969</strong></td><td class="num">0.7062</td></tr>
+            <tr><td>流畅性</td><td class="col-hl num"><strong>0.9719</strong></td><td class="num">0.9344</td></tr>
+            <tr><td>音质清晰度</td><td class="col-hl num"><strong>0.8438</strong></td><td class="num">0.4500</td></tr>
+            <tr><td>自然度</td><td class="col-hl num"><strong>0.9094</strong></td><td class="num">0.8188</td></tr>
+            <tr><td>情感表达</td><td class="col-hl num"><strong>0.8527</strong></td><td class="num">0.8094</td></tr>
+            <tr><td>音色一致性</td><td class="col-hl num"><strong>0.8969</strong></td><td class="num">0.1750</td></tr>
+            <tr><td><strong>综合平均分</strong></td><td class="col-hl num"><strong>0.8953</strong></td><td class="num">0.6490</td></tr>
+            <tr><td><strong>综合 MOS</strong></td><td class="col-hl num"><strong>4.791</strong></td><td class="num">4.298</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout"><strong>74.76% 的测评人认为 LiveTTS 效果更好</strong>，竞品仅获 12.93% 偏好；音色一致性维度差距最大（0.8969 vs 0.1750）。</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 演示 -->
+<section id="demo">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-tag">Demo</div>
+      <h2 data-copy="demoTitle">效果展示</h2>
+      <p class="sec-desc" data-copy="demoDescription">点击卡片查看对应能力的实际合成样例。</p>
+    </div>
+
+    <div class="grid g2" style="margin-bottom:18px">
+      <a class="demo-card" href="#sample-dialog" data-demo="preset" aria-haspopup="dialog">
+        <div class="demo-play">▶</div>
+        <h4>精品音色：语种 / 方言 / 情绪 / 语速全解耦</h4>
+        <p>同一个精品音色，可切换多语种、多方言、多情绪与不同语速，人物风格保持一致。</p>
+      </a>
+      <a class="demo-card" href="#sample-dialog" data-demo="zeroshot" aria-haspopup="dialog">
+        <div class="demo-play">▶</div>
+        <h4>Zero-shot：语种解耦</h4>
+        <p>仅用 3–15 秒 prompt 音频注册音色，即可跨语种合成，音色特征稳定保留。</p>
+      </a>
+    </div>
+
+    <div class="grid g3">
+      <a class="demo-card" href="#sample-dialog" data-demo="longform" aria-haspopup="dialog">
+        <div class="demo-play">▶</div>
+        <h4>直播带货长上下文</h4>
+        <p>篇章级连续合成，音色与情绪稳定。</p>
+      </a>
+      <a class="demo-card" href="#sample-dialog" data-demo="podcast" aria-haspopup="dialog">
+        <div class="demo-play">▶</div>
+        <h4>播客长上下文</h4>
+        <p>长音频对话场景的自然表达。</p>
+      </a>
+      <a class="demo-card" href="#sample-dialog" data-demo="phonetics" aria-haspopup="dialog">
+        <div class="demo-play">▶</div>
+        <h4>声韵母拼读</h4>
+        <p>声母、韵母、整体认读音节精确发音。</p>
+      </a>
+      <a class="demo-card" href="#sample-dialog" data-demo="svc" aria-haspopup="dialog">
+        <div class="demo-play">▶</div>
+        <h4>SVC 唱歌：同桌的你</h4>
+        <p>歌声转换，把目标音色迁移到演唱。</p>
+      </a>
+      <a class="demo-card" href="#sample-dialog" data-demo="humming" aria-haspopup="dialog">
+        <div class="demo-play">▶</div>
+        <h4>哼唱样例</h4>
+        <p>简单哼唱场景的自然表现。</p>
+      </a>
+      <div class="demo-card" style="cursor:default" role="button" tabindex="0" data-demo="all" aria-haspopup="dialog">
+        <div class="demo-play" style="background:rgba(255,255,255,.06);box-shadow:none">＋</div>
+        <h4>更多样例</h4>
+        <p>完整演示集见原始文档「LiveTTS介绍」。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 场景 -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-tag">Scenarios</div>
+      <h2>适用场景与能力组合</h2>
+      <p class="sec-desc">按业务场景直接选用推荐的能力组合，减少试错成本。</p>
+    </div>
+
+    <div class="table-wrap">
+      <div class="scene-row"><div class="scene-name">智能外呼 / 营销触达</div><div class="scene-caps"><span class="chip">Zero-shot 克隆</span><span class="chip">情感控制</span><span class="chip">长上下文</span></div></div>
+      <div class="scene-row"><div class="scene-name">数字人直播 / 虚拟主播</div><div class="scene-caps"><span class="chip">精品音色</span><span class="chip">热情直播风格</span><span class="chip">长上下文</span></div></div>
+      <div class="scene-row"><div class="scene-name">有声内容 / 播客 / 小说</div><div class="scene-caps"><span class="chip">长上下文</span><span class="chip">多情感</span><span class="chip">AudioTag</span></div></div>
+      <div class="scene-row"><div class="scene-name">客服与 IVR</div><div class="scene-caps"><span class="chip">Zero-shot 克隆</span><span class="chip">客服施压风格</span><span class="chip">语速控制</span></div></div>
+      <div class="scene-row"><div class="scene-name">方言本地化运营</div><div class="scene-caps"><span class="chip">方言解耦 · 10 种</span><span class="chip">任意音色</span></div></div>
+      <div class="scene-row"><div class="scene-name">出海多语种内容</div><div class="scene-caps"><span class="chip">多语种解耦 · 8+ 种</span><span class="chip">口音优化</span></div></div>
+      <div class="scene-row"><div class="scene-name">儿童教育 / 语言教学</div><div class="scene-caps"><span class="chip">声韵母拼读</span><span class="chip">温暖情感</span><span class="chip">童趣音色</span></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 快速开始 -->
+<section id="start">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-tag">Quick Start</div>
+      <h2 data-copy="startTitle">四步完成接入</h2>
+      <p class="sec-desc" data-copy="startDescription" hidden></p>
+    </div>
+    <div class="steps">
+      <div class="step"><h4>准备音频</h4><p>录制 3–15 秒清晰人声（Zero-shot），或 30 分钟–5 小时（精品音色）。</p></div>
+      <div class="step"><h4>音色注册</h4><p>提交音频完成音色建模，获得可复用的音色 ID。</p></div>
+      <div class="step"><h4>合成文本</h4><p>传入文本，可选指定情感 Instruct、语种、方言、语速。</p></div>
+      <div class="step"><h4>增强表现力</h4><p>在文本中嵌入 <span class="inline-code">&lt;laughter&gt;</span> 等 AudioTag，补充副语言细节。</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 相关文档 -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-tag">Resources</div>
+      <h2>相关文档与调研</h2>
+    </div>
+    <div class="link-list">
+      <a class="link-item" href="#resource-dialog" data-internal-resource aria-haspopup="dialog">Minimax Speech 2.8HD 技术调研<span class="arrow">↗</span></a>
+      <a class="link-item" href="#resource-dialog" data-internal-resource aria-haspopup="dialog">11Labs V3 技术调研<span class="arrow">↗</span></a>
+      <a class="link-item" href="#resource-dialog" data-internal-resource aria-haspopup="dialog">Qwen3-TTS 技术调研<span class="arrow">↗</span></a>
+      <a class="link-item" href="#resource-dialog" data-internal-resource aria-haspopup="dialog">豆包语音合成 2.0 技术调研<span class="arrow">↗</span></a>
+      <a class="link-item" href="#resource-dialog" data-internal-resource aria-haspopup="dialog">TTS 音色评估-2603-V1（评测数据）<span class="arrow">↗</span></a>
+      <a class="link-item" href="#resource-dialog" data-internal-resource aria-haspopup="dialog">zeroshot / 情感大模型 0120 测评结果<span class="arrow">↗</span></a>
+      <a class="link-item" href="#resource-dialog" data-internal-resource aria-haspopup="dialog">LiveTTS 2.5.2 vs 2.2 评测结论<span class="arrow">↗</span></a>
+      <a class="link-item" href="#resource-dialog" data-internal-resource aria-haspopup="dialog">LiveTTS V2.2 vs Minimax Speech 2.6HD<span class="arrow">↗</span></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="f-brand">LiveTTS · 生成式语音基础模型</div>
+    <div data-copy="responsible">让每一句话都有真人的温度</div>
+  </div>
+</footer>
+
+<dialog id="sample-dialog" class="sample-panel" aria-labelledby="sample-title">
+  <div class="sample-panel-head"><h2 id="sample-title">音频示例</h2><button type="button" data-close="sample-dialog" aria-label="关闭音频示例">关闭 ×</button></div>
+  <p id="sample-context" class="sample-context"></p>
+  <div class="sample-tools"><label>搜索音频<input type="search" id="sample-search" placeholder="名称、语种或合成文本"></label><span id="sample-count" role="status"></span></div>
+  <div id="sample-list"></div>
+  <p class="sample-context" data-copy="sampleNote"></p>
+  <button type="button" id="show-all-samples">查看全部已发布音频</button>
+</dialog>
+<dialog id="resource-dialog" class="sample-panel resource-panel" aria-labelledby="resource-title">
+  <div class="sample-panel-head"><h2 id="resource-title">相关文档</h2><button type="button" data-close="resource-dialog" aria-label="关闭文档说明">关闭 ×</button></div>
+  <p class="sample-context">附件中的此项为团队内部文档，未在公开站点提供原链接。可通过下列公开资源了解项目。</p>
+  <div id="public-resources" class="link-list"></div>
+</dialog>
 </body>
 </html>

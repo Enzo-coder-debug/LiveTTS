@@ -1,6 +1,6 @@
 window.LIVETTS_SITE = {
   "defaultLanguage": "zh",
-  "spaceUrl": "https://huggingface.co/spaces/EnzELI/LiveTTS",
+  "spaceUrl": "https://huggingface.co/spaces/Enzo-coder-debug/LiveTTS",
   "repositoryUrl": "https://github.com/Enzo-coder-debug/LiveTTS",
   "technicalReportUrl": "",
   "contactUrl": "",
@@ -12,18 +12,18 @@ window.LIVETTS_SITE = {
       "heroFirst": "让每一句话",
       "heroSecond": "都有真人的温度",
       "heroIntro": "输入一段文本，输出自然人声。",
-      "heroEmphasis": "用 3–15 秒参考音频注册音色，",
-      "heroEnd": "让同一个声音跨越语种、方言与情绪。",
-      "demoTitle": "听见 LiveTTS 的不同表达",
-      "demoDescription": "同一指定音色，直接试听。情感文案分别设计，语种与方言均显式指定。",
+      "heroEmphasis": "3–15 秒完成音色克隆",
+      "heroEnd": "，一个音色即可切换语种、方言、情绪与语速—— 不只是能听，而是能上线、能扩展、能真正提升业务生产力的语音底座。",
+      "demoTitle": "效果展示",
+      "demoDescription": "点击卡片查看对应能力的实际合成样例。",
       "sampleNote": "合成语音 · 指定预置音色 · 请求版本 2.8.1 · 24 kHz / PCM16。本组不是零样本克隆对照，亦不代表独立评测结论。",
-      "capabilityTitle": "从音色到表达，八项核心能力",
-      "capabilityDescription": "从零样本克隆到篇章级语音，把自然表达变成可控制、可复用的能力。",
-      "evalTitle": "业务应用与内部听评",
-      "evalDescription": "保留团队原稿中的历史版本结果；不代表当前版本的独立榜单排名。",
-      "startTitle": "让声音进入你的产品",
-      "startDescription": "已有 API 可供接入评估。音色注册与真实合成通过授权服务完成，密钥仅保留在服务端。",
-      "responsible": "仅使用已获授权的音色与录音，适当标识合成语音，不冒用身份或误导听众。"
+      "capabilityTitle": "八项核心能力，覆盖真实业务全链路",
+      "capabilityDescription": "从零样本克隆到篇章级长音频，从情感表达到副语言细节，LiveTTS 把「像真人」拆解成可控制、可复用的能力模块。",
+      "evalTitle": "业务应用与盲评结果",
+      "evalDescription": "在真实业务场景中与真人录音、主流竞品做对照评测。",
+      "startTitle": "四步完成接入",
+      "startDescription": "",
+      "responsible": "让每一句话都有真人的温度"
     },
     "en": {
       "badge": "Generative speech for real-world products",
@@ -43,5 +43,6 @@ window.LIVETTS_SITE = {
       "startDescription": "An API is available for integration evaluation. Voice registration and synthesis use an authorized service; credentials stay on your server.",
       "responsible": "Use only authorized voices and recordings. Disclose synthetic speech where appropriate. Do not impersonate people or mislead listeners."
     }
-  }
+  },
+  "layout": "attachment"
 };

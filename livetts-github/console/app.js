@@ -158,15 +158,17 @@
   const copyNames = { badge: '顶部徽标', heroFirst: '首页标题 · 第一行', heroSecond: '首页标题 · 第二行', heroIntro: '首页简介 · 开头', heroEmphasis: '首页简介 · 强调文字', heroEnd: '首页简介 · 结尾', demoTitle: '音频区标题', demoDescription: '音频区说明', sampleNote: '音频免责声明', capabilityTitle: '核心能力标题', capabilityDescription: '核心能力说明', evalTitle: '评测区标题', evalDescription: '评测区说明', startTitle: '接入区标题', startDescription: '接入区说明', responsible: '页脚使用声明' };
   function renderSettings() {
     const container = select('#settings-form'); container.replaceChildren();
-    const general = make('div', 'panel'); general.append(make('div', 'panel-label', 'SITE SETTINGS'), make('h2', '', '链接与默认语言'));
+    const attachmentLayout = state.config.layout === 'attachment';
+    const general = make('div', 'panel'); general.append(make('div', 'panel-label', 'SITE SETTINGS'), make('h2', '', attachmentLayout ? '附件页面 · 公开资源链接' : '链接与默认语言'));
+    if (attachmentLayout) general.append(make('p', '', '官网按附件保留中文内容与完整布局。以下公开链接在“相关文档”弹窗中展示；音频仍通过原演示卡片打开。'));
     const grid = make('div', 'field-grid');
     const language = make('label', 'field'); language.append(make('span', '', '默认语言'));
     const dropdown = make('select');
     for (const [value, label] of [['zh', '中文'], ['en', 'English']]) { const option = make('option', '', label); option.value = value; dropdown.append(option); }
-    dropdown.value = state.config.defaultLanguage; dropdown.addEventListener('change', () => { state.config.defaultLanguage = dropdown.value; changed(); }); language.append(dropdown); grid.append(language);
+    dropdown.value = state.config.defaultLanguage; dropdown.addEventListener('change', () => { state.config.defaultLanguage = dropdown.value; changed(); }); language.append(dropdown); if (!attachmentLayout) grid.append(language);
     for (const [key, label] of [['contactUrl', '联系链接（HTTPS 或 mailto）'], ['spaceUrl', 'Hugging Face 体验页'], ['repositoryUrl', 'GitHub 项目链接'], ['technicalReportUrl', '技术报告链接']]) grid.append(field(label, state.config[key], value => { state.config[key] = value; }));
     general.append(grid); container.append(general);
-    for (const [languageCode, languageName] of [['zh', '中文文案'], ['en', 'English copy']]) {
+    for (const [languageCode, languageName] of attachmentLayout ? [['zh', '附件中文文案']] : [['zh', '中文文案'], ['en', 'English copy']]) {
       const panel = make('div', 'panel'); panel.append(make('div', 'panel-label', languageCode.toUpperCase()), make('h2', '', languageName), make('p', '', '留空时使用网站原有文案。修改后保存，可在预览中查看。'));
       const fields = make('div', 'field-grid');
       for (const key of state.copyFields) fields.append(field(copyNames[key] || key, state.config.copy?.[languageCode]?.[key], value => {

@@ -1,268 +1,131 @@
 (() => {
-  const select = (selector) => document.querySelector(selector);
   const data = window.LIVETTS_DATA;
   const config = window.LIVETTS_SITE;
-  const copy = {
-    zh: {
-      skip: '跳到音频示例', navDemo: '效果展示', navCapability: '核心能力', navEval: '业务评测', navStart: '快速开始',
-      badge: '面向真实产品环境的生成式语音基础模型', heroFirst: '让每一句话', heroSecond: '都有真人的温度',
-      heroIntro: '输入一段文本，输出自然人声。', heroEmphasis: '用 3–15 秒参考音频注册音色，', heroEnd: '让同一个声音跨越语种、方言与情绪。',
-      listen: '▶ 试听音频示例', getStarted: '快速接入 →', statAudio: '真实合成音频', statEmotions: '情感指令示例', statDialects: '地方方言示例', statLanguages: '外语示例',
-      demoTitle: '听见 LiveTTS 的不同表达', demoDescription: '同一指定音色，直接试听。情感文案分别设计，语种与方言均显式指定。', search: '搜索音频或文本',
-      sampleNote: '合成语音 · 指定预置音色 · 请求版本 2.8.1 · 24 kHz / PCM16。本组不是零样本克隆对照，亦不代表独立评测结论。',
-      capabilityTitle: '从音色到表达，八项核心能力', capabilityDescription: '从零样本克隆到篇章级语音，把自然表达变成可控制、可复用的能力。',
-      evalTitle: '业务应用与内部听评', evalDescription: '保留团队原稿中的历史版本结果；不代表当前版本的独立榜单排名。', exportResults: '下载完整评测数据 CSV ↓',
-      startTitle: '让声音进入你的产品', startDescription: '已有 API 可供接入评估。音色注册与真实合成通过授权服务完成，密钥仅保留在服务端。',
-      repository: '项目与示例', space: '静态体验预览', modelCard: '模型能力与使用说明', audioManifest: '音频清单与生成记录', contact: '联系团队',
-      responsible: '仅使用已获授权的音色与录音，适当标识合成语音，不冒用身份或误导听众。',
-      all: '全部', clips: '条音频', showing: '当前显示', empty: '没有匹配的音频，请试试其他关键词。', parameters: '文本与参数', copyText: '复制文本', copied: '已复制合成文本', copyFailed: '复制失败，请手动选择文本。',
-      internal: '内部评测 · 历史版本', dimension: '维度', details: '查看分项与评测说明', error: '音频加载失败，请重试或下载文件。', download: '下载 WAV', reference: '参考音频', pending: '尚未发布',
-    },
-    en: {
-      skip: 'Skip to audio samples', navDemo: 'Audio demos', navCapability: 'Capabilities', navEval: 'Evaluation', navStart: 'Get started',
-      badge: 'Generative speech for real-world products', heroFirst: 'Every sentence.', heroSecond: 'A human touch.',
-      heroIntro: 'Turn text into natural speech. ', heroEmphasis: 'Register a voice from 3–15 seconds of reference audio, ', heroEnd: 'then explore languages, dialects and emotions with one voice.',
-      listen: '▶ Listen to the samples', getStarted: 'Get started →', statAudio: 'Generated audio samples', statEmotions: 'Emotion prompt examples', statDialects: 'Dialect examples', statLanguages: 'Foreign languages sampled',
-      demoTitle: 'Hear the many sides of LiveTTS', demoDescription: 'One selected voice, distinct scripts for each emotion, and explicit language and dialect requests.', search: 'Search audio or text',
-      sampleNote: 'Synthetic speech · Selected preset voice · Requested version 2.8.1 · 24 kHz / PCM16. These are not zero-shot cloning comparisons or independent evaluation results.',
-      capabilityTitle: 'Eight capabilities, from voice to expression', capabilityDescription: 'From zero-shot cloning to long-form speech: natural expression, with controls you can reuse.',
-      evalTitle: 'Applications & internal listening studies', evalDescription: 'Historical model results reproduced from team materials, not an independent ranking of the current model.', exportResults: 'Download full evaluation CSV ↓',
-      startTitle: 'Bring a voice to your product', startDescription: 'An API is available for integration evaluation. Voice registration and synthesis use an authorized service; credentials stay on your server.',
-      repository: 'Project & examples', space: 'Static demo preview', modelCard: 'Model capabilities & usage', audioManifest: 'Audio catalogue & generation record', contact: 'Contact the team',
-      responsible: 'Use only authorized voices and recordings. Disclose synthetic speech where appropriate. Do not impersonate people or mislead listeners.',
-      all: 'All', clips: 'audio clips', showing: 'Showing', empty: 'No matching audio. Try another keyword.', parameters: 'Text & parameters', copyText: 'Copy text', copied: 'Synthesis text copied', copyFailed: 'Could not copy. Please select the text manually.',
-      internal: 'Internal study · Historical model', dimension: 'Dimension', details: 'View dimensions & methodology', error: 'Audio could not load. Retry or download the file.', download: 'Download WAV', reference: 'Reference audio', pending: 'Not published',
-    },
+  const dialog = document.querySelector('#sample-dialog');
+  const search = document.querySelector('#sample-search');
+  let selectedDemo = 'all';
+  const make = (tag, className, text) => {
+    const element = document.createElement(tag);
+    if (className) element.className = className;
+    if (text !== undefined) element.textContent = text;
+    return element;
   };
-  const capabilities = [
-    ['🎙️', ['一句话音色克隆', 'Zero-shot voice cloning'], ['用 3–15 秒参考音频注册音色，合成新的文本。这里的时长指输入参考录音长度，并非克隆耗时。', 'Register a voice using 3–15 seconds of reference audio, then synthesize new text. This is input recording length, not processing latency.']],
-    ['💎', ['精品音色定制', 'Custom voice tuning'], ['根据团队能力说明，可用 30 分钟–5 小时录音进行 LoRA SFT，打造专属音色。', 'Team-described capability: tune a dedicated voice with LoRA SFT using 30 minutes to 5 hours of recordings.']],
-    ['🎭', ['多情感控制', 'Emotion control'], ['温暖、高兴、悲伤、中立、愤怒、恐惧，六种情绪分别搭配对应文案，展示不同的表达方式。', 'Warm, happy, sad, neutral, angry and fearful: six emotions, each paired with its own script.']],
-    ['🗺️', ['地方方言', 'Chinese dialects'], ['同一音色切换方言指令，试听四川、粤语、东北、河南、天津、陕西、上海与闽南示例。', 'Explore Sichuan, Cantonese, Northeastern, Henan, Tianjin, Shaanxi, Shanghainese and Southern Min requests with one configured voice.']],
-    ['🌍', ['多语种表达', 'Multilingual speech'], ['显式指定语种标签，试听英语、日语、德语、法语、西班牙语、荷兰语、韩语、阿拉伯语、印尼语及中英混合文本。', 'Explicit language tags for English, Japanese, German, French, Spanish, Dutch, Korean, Arabic, Indonesian and mixed Chinese–English text.']],
-    ['💬', ['副语言 AudioTag', 'Paralinguistic audio tags'], ['在文本中插入 <laughter>、<sigh>、<throat>，探索大笑、叹气与清嗓等表达。', 'Insert <laughter>, <sigh> and <throat> into text to explore laughter, sighs and throat clearing.']],
-    ['🔤', ['拼音与拼读', 'Phonetics & spelling'], ['使用 SSML phoneme 标签和 sym 音素，演示“堵塞的拼音是 d u du s e se”，而非直接朗读英文字母。', 'Use SSML phoneme tags with the sym alphabet to demonstrate the spelling sequence d u du s e se for 堵塞, rather than reading English letter names.']],
-    ['📖', ['篇章级长音频', 'Long-form narration'], ['故事旁白、生活播客、导览解说：在段落之间观察停顿、节奏和表达连贯性。', 'Stories, podcasts and guided tours: listen for pauses, rhythm and continuity across paragraphs.']],
-  ];
-  const steps = [
-    [['准备音色', 'Prepare a voice'], ['提供已获授权的参考录音，确认使用与发布范围。', 'Prepare an authorized reference recording and agree on usage rights.']],
-    [['配置表达', 'Set the expression'], ['选择文本、语种、情感、方言及语速等参数。', 'Choose text, language, emotion, dialect and speaking rate.']],
-    [['接入 API', 'Integrate the API'], ['从服务端发起合成请求，不向浏览器暴露凭证。', 'Send synthesis requests from your server, never exposing credentials in the browser.']],
-    [['试听与上线', 'Review & release'], ['核对发音、音色与内容，标识合成语音后再发布。', 'Review pronunciation, voice and content, then label synthetic speech before publishing.']],
-  ];
-  let language = config.defaultLanguage === 'en' ? 'en' : 'zh';
-  try { if (['en', 'zh'].includes(localStorage.getItem('livetts-language'))) language = localStorage.getItem('livetts-language'); } catch {}
-  let category = 'all';
-  let query = '';
-  let toastTimer;
-  const text = (key) => config.copy?.[language]?.[key]?.trim() || copy[language][key];
-  const localized = (value) => value[language];
-  const pair = (value) => value[language === 'zh' ? 0 : 1];
-  const playable = (output) => Boolean(output.src && !output.illustrative && output.enabled !== false);
-  function element(tag, className, content) {
-    const node = document.createElement(tag);
-    if (className) node.className = className;
-    if (content !== undefined) node.textContent = content;
-    return node;
+  const playable = output => Boolean(output.src && !output.illustrative && output.enabled !== false);
+  const entries = {
+    preset: { title: '精品音色 · 已发布音频', note: '以下为同一指定预置音色的合成输出，不是附件中的原始演示视频。没有语速对照样例。' },
+    all: { title: '全部已发布音频', note: '保留已经确认的情绪、多语种、方言、长文本、拼读与应用场景音频。' },
+    zeroshot: { title: 'Zero-shot：语种解耦', note: '附件中的原始演示尚未提供可公开媒体。当前 36 条音频使用预置音色，不将其作为 Zero-shot 克隆对照。', unavailable: true },
+    longform: { title: '长上下文 · 故事与直播样例', note: '展示现有故事旁白与直播文案音频；不是附件中的原始直播长视频，也不构成持续直播时长测试。', cases: ['long-story', 'everyday-scenarios'], filenames: ['long-story-output.wav', 'scene-live.wav'] },
+    podcast: { title: '播客长上下文', note: '现有生活播客独白样例，不是附件中的原始对话演示。', filenames: ['long-podcast.wav'] },
+    phonetics: { title: '声韵母拼读', note: '堵塞的拼音是 d u du s e se。中文引导语与 SSML 拼读分别合成后拼接，真实请求见“文本与参数”。', cases: ['phonetics'] },
+    svc: { title: 'SVC 唱歌：同桌的你', note: '该演示在附件中指向内部媒体，尚未提供可公开文件。保留原卡片，不使用其他音频或空音频代替。', unavailable: true },
+    humming: { title: '哼唱样例', note: '该演示在附件中指向内部媒体，尚未提供可公开文件。保留原卡片，不使用其他音频或空音频代替。', unavailable: true },
+  };
+
+  for (const element of document.querySelectorAll('[data-copy]')) {
+    const key = element.dataset.copy;
+    const value = config.copy?.zh?.[key];
+    if (typeof value === 'string' && value.trim()) {
+      if (element.textContent.replace(/\s+/g, ' ').trim() !== value.trim()) element.textContent = value;
+      element.hidden = false;
+    }
   }
-  function announce(message) {
-    const toast = select('#toast');
-    clearTimeout(toastTimer);
-    toast.textContent = message;
-    toast.hidden = false;
-    toastTimer = setTimeout(() => { toast.hidden = true; }, 2500);
+
+  function pauseAudio() {
+    document.querySelectorAll('audio').forEach(audio => audio.pause());
   }
-  function pauseAudio() { document.querySelectorAll('audio').forEach(audio => audio.pause()); }
-  function media(source, label) {
-    const wrapper = element('div', 'audio-player');
-    const audio = element('audio');
-    audio.controls = true;
-    audio.preload = 'metadata';
-    audio.src = source;
-    audio.setAttribute('aria-label', label);
-    const failure = element('p', 'audio-error', text('error'));
-    failure.hidden = true;
-    const download = element('a', '', text('download'));
-    download.href = source;
-    download.download = '';
-    failure.append(' ', download);
-    audio.addEventListener('play', () => document.querySelectorAll('audio').forEach(other => { if (audio !== other) other.pause(); }));
-    audio.addEventListener('error', () => { failure.hidden = false; });
-    wrapper.append(audio, failure);
-    return wrapper;
-  }
+
   function audioCard(output) {
-    const card = element('article', 'demo-card');
-    const heading = element('div', 'audio-heading');
-    heading.append(element('h4', '', localized(output.label)), element('span', 'audio-language', output.language));
-    const transcript = element('p', 'transcript', output.text);
+    const card = make('article', 'sample-output');
+    const heading = make('div', 'sample-output-heading');
+    heading.append(make('h4', '', output.label.zh), make('span', 'sample-language', output.language));
+    const transcript = make('p', 'sample-transcript', output.text);
     transcript.lang = output.language;
     transcript.dir = 'auto';
-    card.append(heading, transcript, media(output.src, localized(output.label)));
-    const disclosure = element('details', 'audio-details');
-    disclosure.append(element('summary', '', text('parameters')));
-    const completeText = element('p', 'full-transcript', output.text);
-    completeText.lang = output.language;
-    completeText.dir = 'auto';
-    disclosure.append(completeText, element('p', 'audio-metadata', output.model), element('p', 'audio-metadata', output.settings));
-    const copyButton = element('button', 'text-button', text('copyText'));
-    copyButton.type = 'button';
-    copyButton.addEventListener('click', async () => {
-      try { await navigator.clipboard.writeText(output.text); announce(text('copied')); }
-      catch { announce(text('copyFailed')); }
+    const audio = make('audio');
+    audio.controls = true;
+    audio.preload = 'metadata';
+    audio.src = output.src;
+    audio.setAttribute('aria-label', output.label.zh);
+    audio.addEventListener('play', () => document.querySelectorAll('audio').forEach(other => { if (other !== audio) other.pause(); }));
+    const error = make('p', 'sample-error', '音频加载失败，请刷新后重试。');
+    error.hidden = true;
+    audio.addEventListener('error', () => { error.hidden = false; });
+    const details = make('details');
+    details.append(make('summary', '', '文本与参数'), make('p', '', output.text), make('p', '', output.model), make('p', '', output.settings));
+    const copy = make('button', '', '复制合成文本');
+    copy.type = 'button';
+    copy.addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(output.text); copy.textContent = '已复制'; }
+      catch { copy.textContent = '复制失败，请手动选择文本'; }
     });
-    disclosure.append(copyButton);
-    card.append(disclosure);
+    details.append(copy);
+    card.append(heading, transcript, audio, error, details);
     return card;
   }
+
   function renderSamples() {
     pauseAudio();
-    const list = select('#sample-list');
-    list.replaceChildren();
-    let shown = 0;
-    for (const sample of data.samples) {
-      if (category !== 'all' && sample.category !== category) continue;
-      const outputs = sample.outputs.filter(output => playable(output) && `${sample.title.en} ${sample.title.zh} ${output.label.en} ${output.label.zh} ${output.language} ${output.text}`.toLocaleLowerCase().includes(query));
-      if (!outputs.length) continue;
-      shown += outputs.length;
-      const group = element('div', 'sample-group');
-      const heading = element('div', 'group-heading');
-      heading.append(element('h3', '', localized(sample.title)), element('span', 'group-count', `${outputs.length} ${text('clips')}`));
-      group.append(heading);
-      if (sample.reference.src) {
-        const reference = element('details', 'reference-audio');
-        reference.append(element('summary', '', text('reference')), element('p', '', sample.reference.transcript), media(sample.reference.src, localized(sample.reference.label)));
-        group.append(reference);
+    const entry = entries[selectedDemo];
+    const container = document.querySelector('#sample-list');
+    container.replaceChildren();
+    const query = search.value.trim().toLocaleLowerCase();
+    let count = 0;
+    if (!entry.unavailable) {
+      for (const sample of data.samples) {
+        if (entry.cases && !entry.cases.includes(sample.id)) continue;
+        const outputs = sample.outputs.filter(output => playable(output) && (!entry.filenames || entry.filenames.includes(output.src.split('/').at(-1))) && `${sample.title.zh} ${sample.title.en} ${output.label.zh} ${output.label.en} ${output.language} ${output.text}`.toLocaleLowerCase().includes(query));
+        if (!outputs.length) continue;
+        const group = make('div', 'sample-group');
+        const grid = make('div', 'sample-output-grid');
+        outputs.forEach(output => grid.append(audioCard(output)));
+        group.append(make('h3', '', sample.title.zh), make('p', 'sample-group-description', sample.description.zh), grid);
+        container.append(group);
+        count += outputs.length;
       }
-      const grid = element('div', 'grid g3 audio-grid');
-      outputs.forEach(output => grid.append(audioCard(output)));
-      group.append(grid);
-      list.append(group);
     }
-    if (!shown) list.append(element('p', 'empty-state', text('empty')));
-    select('#sample-status').textContent = `${text('showing')} ${shown} / ${data.samples.flatMap(sample => sample.outputs).filter(playable).length} ${text('clips')}`;
-    select('#sample-filters').querySelectorAll('button').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.category === category)));
+    if (!count) container.append(make('p', 'sample-empty', entry.unavailable ? '暂无可公开的对应媒体。' : '没有匹配的音频。'));
+    document.querySelector('#sample-count').textContent = `${count} 条音频`;
+    document.querySelector('#show-all-samples').hidden = selectedDemo === 'all' || selectedDemo === 'preset';
+    document.querySelector('.sample-tools').hidden = Boolean(entry.unavailable);
   }
-  function renderFilters() {
-    const filters = select('#sample-filters');
-    filters.replaceChildren();
-    for (const entry of [{ id: 'all', en: 'All', zh: '全部' }, ...data.categories]) {
-      const count = data.samples.filter(sample => entry.id === 'all' || sample.category === entry.id).flatMap(sample => sample.outputs).filter(playable).length;
-      const button = element('button', 'filter-button', `${localized(entry)} ${count}`);
-      button.type = 'button';
-      button.dataset.category = entry.id;
-      button.addEventListener('click', () => { category = entry.id; renderSamples(); });
-      filters.append(button);
-    }
+
+  function showSamples(type) {
+    selectedDemo = type;
+    search.value = '';
+    document.querySelector('#sample-title').textContent = entries[type].title;
+    document.querySelector('#sample-context').textContent = entries[type].note;
+    renderSamples();
+    if (!dialog.open) dialog.showModal();
+    dialog.scrollTop = 0;
   }
-  function renderCapabilities() {
-    const grid = select('#capability-grid');
-    grid.replaceChildren();
-    for (const [icon, title, description] of capabilities) {
-      const card = element('article', 'card');
-      const mark = element('div', 'card-icon', icon);
-      mark.setAttribute('aria-hidden', 'true');
-      card.append(mark, element('h3', '', pair(title)), element('p', '', pair(description)));
-      grid.append(card);
-    }
-    const container = select('#integration-steps');
-    container.replaceChildren();
-    steps.forEach(([title, description]) => {
-      const step = element('div', 'step');
-      step.append(element('h4', '', pair(title)), element('p', '', pair(description)));
-      container.append(step);
-    });
+
+  for (const element of document.querySelectorAll('[data-demo]')) {
+    element.addEventListener('click', event => { event.preventDefault(); showSamples(element.dataset.demo); });
+    if (element.tagName !== 'A') element.addEventListener('keydown', event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); showSamples(element.dataset.demo); } });
   }
-  function renderEvaluations() {
-    const container = select('#evaluation-list');
-    container.replaceChildren();
-    for (const evaluation of data.evaluations) {
-      const card = element('article', 'eval-card');
-      const heading = element('div', 'eval-title');
-      heading.append(element('h3', '', localized(evaluation.label)), element('span', 'tag', text('internal')));
-      const scores = element('div', 'eval-scores');
-      [evaluation.model, evaluation.baseline].forEach((model, index) => {
-        const score = element('div', index === 0 ? 'eval-score primary-score' : 'eval-score');
-        score.append(element('strong', '', String(evaluation.headline[index])), element('span', '', model));
-        scores.append(score);
-      });
-      const disclosure = element('details', 'eval-details');
-      disclosure.append(element('summary', '', text('details')), element('p', 'eval-method', localized(evaluation.method)));
-      const wrapper = element('div', 'table-wrap');
-      wrapper.tabIndex = 0;
-      wrapper.setAttribute('role', 'region');
-      wrapper.setAttribute('aria-label', localized(evaluation.title));
-      const table = element('table');
-      table.append(element('caption', 'sr-only', localized(evaluation.title)));
-      const header = element('thead');
-      const headerRow = element('tr');
-      [text('dimension'), evaluation.model, evaluation.baseline].forEach((value, index) => { const cell = element('th', index === 1 ? 'col-hl' : '', value); cell.scope = 'col'; headerRow.append(cell); });
-      header.append(headerRow);
-      const body = element('tbody');
-      evaluation.rows.forEach(metric => {
-        const row = element('tr');
-        row.append(element('td', '', localized(metric)), element('td', 'col-hl num', String(metric.values[0])), element('td', 'num', String(metric.values[1])));
-        body.append(row);
-      });
-      table.append(header, body);
-      wrapper.append(table);
-      disclosure.append(wrapper, element('p', 'callout callout-note', localized(evaluation.caveat)));
-      card.append(heading, element('p', 'eval-sub', localized(evaluation.metric)), scores, disclosure);
-      container.append(card);
-    }
-  }
-  function setPublicLink(id, value) {
-    if (!value) return;
-    const link = document.getElementById(id);
+  search.addEventListener('input', renderSamples);
+  document.querySelector('#show-all-samples').addEventListener('click', () => showSamples('all'));
+  for (const close of document.querySelectorAll('[data-close]')) close.addEventListener('click', () => document.getElementById(close.dataset.close).close());
+  dialog.addEventListener('close', () => { pauseAudio(); document.querySelector('#sample-list').replaceChildren(); });
+
+  const resources = document.querySelector('#public-resources');
+  for (const [key, label] of [['repositoryUrl', 'GitHub 项目'], ['spaceUrl', 'Hugging Face 体验页'], ['technicalReportUrl', '技术报告'], ['contactUrl', '联系团队']]) {
     try {
-      const url = new URL(value);
-      if (url.protocol !== 'https:' && !(id === 'contact-link' && url.protocol === 'mailto:')) return;
+      if (!config[key]) continue;
+      const url = new URL(config[key]);
+      if (url.protocol !== 'https:' && !(key === 'contactUrl' && url.protocol === 'mailto:')) continue;
+      const link = make('a', 'link-item', label);
       link.href = url.href;
       link.target = '_blank';
       link.rel = 'noopener noreferrer';
-      link.hidden = false;
+      link.append(make('span', 'arrow', '↗'));
+      resources.append(link);
     } catch {}
   }
-  function render() {
-    document.documentElement.lang = language === 'zh' ? 'zh-CN' : 'en';
-    document.title = language === 'zh' ? 'LiveTTS · 生成式语音基础模型' : 'LiveTTS · Generative Speech Model';
-    document.querySelectorAll('[data-i18n]').forEach(node => { node.textContent = text(node.dataset.i18n); });
-    const toggle = select('#language-switch');
-    toggle.textContent = language === 'zh' ? 'EN' : '中文';
-    toggle.setAttribute('aria-label', language === 'zh' ? 'Switch to English' : '切换到中文');
-    select('#sample-search').placeholder = text('search');
-    const outputsFor = (id) => data.samples.find(sample => sample.id === id).outputs.filter(playable);
-    select('#stat-audio').textContent = data.samples.flatMap(sample => sample.outputs).filter(playable).length;
-    select('#stat-emotions').textContent = outputsFor('emotional-range').length;
-    select('#stat-dialects').textContent = outputsFor('local-voices').length;
-    select('#stat-languages').textContent = new Set(outputsFor('across-languages').map(output => output.language).filter(value => value !== 'zh-CN' && !value.includes('+'))).size;
-    renderFilters();
-    renderSamples();
-    renderCapabilities();
-    renderEvaluations();
-  }
-  select('#language-switch').addEventListener('click', () => {
-    language = language === 'zh' ? 'en' : 'zh';
-    try { localStorage.setItem('livetts-language', language); } catch {}
-    render();
+  for (const element of document.querySelectorAll('[data-internal-resource]')) element.addEventListener('click', event => {
+    event.preventDefault();
+    document.querySelector('#resource-title').textContent = element.textContent.replace('↗', '').trim();
+    document.querySelector('#resource-dialog').showModal();
   });
-  select('#sample-search').addEventListener('input', event => { query = event.target.value.trim().toLocaleLowerCase(); renderSamples(); });
-  select('#export-results').addEventListener('click', () => {
-    const rows = [['Study', 'Model', 'Baseline', 'Metric', 'Model score', 'Baseline score', 'Method', 'Limitations']];
-    data.evaluations.forEach(evaluation => {
-      rows.push([localized(evaluation.title), evaluation.model, evaluation.baseline, localized(evaluation.metric), ...evaluation.headline, localized(evaluation.method), localized(evaluation.caveat)]);
-      evaluation.rows.forEach(metric => rows.push([localized(evaluation.title), evaluation.model, evaluation.baseline, localized(metric), ...metric.values, '', '']));
-    });
-    const csv = '\uFEFF' + rows.map(row => row.map(value => `"${String(value).replaceAll('"', '""')}"`).join(',')).join('\r\n');
-    const url = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8;' }));
-    const link = element('a');
-    link.href = url;
-    link.download = 'livetts-internal-evaluations.csv';
-    link.click();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-  });
-  setPublicLink('repository-link', config.repositoryUrl);
-  setPublicLink('space-link', config.spaceUrl);
-  setPublicLink('contact-link', config.contactUrl);
-  render();
 })();

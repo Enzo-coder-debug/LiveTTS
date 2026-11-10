@@ -16,7 +16,7 @@ The source lists ten Chinese dialects: Northeast Mandarin, Henan, Minnan, Tianji
 
 ## Evaluation status
 
-The site reproduces selected **historical internal evaluations**, retaining the original compared model names and versions. The results are not an Artificial Analysis / TTS Arena ranking and must not be presented as one.
+The site reproduces the supplied attachment's six **historical internal evaluation** cards, retaining the original compared model names, versions, claims, and figures. This is reproduction of team-provided material, not independent verification. The results are not an Artificial Analysis / TTS Arena ranking and must not be presented as one. The following notes cover three of those evaluations:
 
 1. **General speech:** JoyAI Zeroshot V2.7.1 vs MiniMax Speech 2.8HD. Reported weighted score 0.74 vs 0.64. Supplied dimensions and rounded weights do not fully establish the aggregate; raw scoring details are needed.
 2. **Virtual-host livestream:** LiveTTS-ZERO V2.5.2 vs MiniMax Speech 2.6HD. 10 clips and 17 participants. Reported aggregate 4.17 vs 2.96; the original aggregate formula was not supplied and does not equal the simple sum of the displayed dimension scores.

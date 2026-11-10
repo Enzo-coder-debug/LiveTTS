@@ -152,6 +152,13 @@ for (const filename of ["assets/app.js", "site.config.js", "data.js"]) {
   try { new vm.Script(read(filename)); check(true, `${filename} syntax`); }
   catch (error) { check(false, `${filename}: ${error.message}`); }
 }
+if (config.layout === 'attachment') {
+  for (const [, key] of html.matchAll(/data-copy="([^"]+)"/g)) check(typeof config.copy?.zh?.[key] === 'string', `Missing attachment copy field ${key}`);
+  for (const id of ['capability', 'matrix', 'eval', 'demo', 'start', 'sample-dialog', 'resource-dialog']) check(ids.includes(id), `Missing attachment section ${id}`);
+  check((html.match(/class="eval-card"/g) || []).length === 6, 'Attachment must retain all six evaluation cards');
+  check((html.match(/class="scene-row"/g) || []).length === 7, 'Attachment must retain all seven scenario rows');
+  check((html.match(/data-demo="/g) || []).length === 8, 'Attachment must retain all eight demo cards');
+}
 
 function inspectPublicFile(relative) {
   const absolute = path.join(root, relative);
