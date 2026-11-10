@@ -559,6 +559,7 @@ window.LIVETTS_DATA = {
           "language": "zh-CN",
           "text": "街角的书店总比别处晚一点熄灯。林夏推开门的时候，雨刚刚停下，空气里混着纸张和泥土的气味。店主从书后抬起头，指了指窗边的座位。\n\n“你找的那本书，今天刚到。”他说。\n\n林夏愣住了。她从来没有告诉过任何人，自己在找一本什么样的书。她走到桌边，翻开封面。第一页只写着一句话：有些故事，要等到你准备好了，才会开始。",
           "src": "./assets/audio/peach-20261110/long-story-output.wav",
+          "showcaseSlot": "story",
           "model": "LiveTTS 2.8.1 (requested)",
           "settings": "Selected preset voice · emotion=中立 · lang=zh · speed=1.0 · volume=4.0 · PCM16 / 24 kHz / mono · 2026-11-10",
           "illustrative": false
@@ -571,6 +572,7 @@ window.LIVETTS_DATA = {
           "language": "zh-CN",
           "text": "欢迎收听今天的生活电台。你有没有发现，我们常常把一天安排得满满当当，却忘了给自己留一点空白？早晨醒来，先别急着拿起手机。拉开窗帘，看看今天的天空，给自己倒一杯温水。走在路上的时候，试着留意那些平时没有注意过的小事：树叶的颜色，街角新开的花店，还有迎面走来的人脸上的笑容。\n\n放慢脚步，并不意味着停下前进。它只是让我们重新听见自己的声音，知道什么值得认真，什么可以暂时放下。如果今天只能完成一件小事，那就把它做好。如果有一个人值得感谢，那就把这句话说出口。生活不一定每天都有惊喜，但我们可以每天都带着一点好奇。好了，今天就聊到这里，愿你在忙碌之中，也能找到属于自己的片刻安静。",
           "src": "./assets/audio/peach-20261110/long-podcast.wav",
+          "showcaseSlot": "podcast",
           "model": "LiveTTS 2.8.1 (requested)",
           "settings": "Selected preset voice · emotion=中立 · lang=zh · speed=1.0 · volume=4.0 · PCM16 / 24 kHz / mono · 2026-11-10",
           "illustrative": false
@@ -658,6 +660,7 @@ window.LIVETTS_DATA = {
           "language": "zh-CN",
           "text": "欢迎刚刚进入直播间的朋友！今天给大家介绍这款随行杯，轻巧好带，杯盖一拧就能打开。上班、出游，都可以把喜欢的饮品带在身边。",
           "src": "./assets/audio/peach-20261110/scene-live.wav",
+          "showcaseSlot": "livestream",
           "model": "LiveTTS 2.8.1 (requested)",
           "settings": "Selected preset voice · emotion=高兴 · lang=zh · speed=1.0 · volume=4.0 · PCM16 / 24 kHz / mono · 2026-11-10",
           "illustrative": false

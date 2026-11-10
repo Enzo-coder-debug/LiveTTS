@@ -36,12 +36,13 @@ export async function startConsole({ root = ROOT, port = 7863, publish = publish
     try {
       if (request.headers.host !== new URL(origin).host) return json(response, 403, { error: '仅允许本机访问。' });
       const url = new URL(request.url, origin);
-      if (url.pathname === '/console/' && equal(url.searchParams.get('unlock'))) {
-        response.writeHead(303, { 'Set-Cookie': `livetts_console=${token}; HttpOnly; SameSite=Strict; Path=/`, Location: '/console/' });
+      if (['/console/', '/'].includes(url.pathname) && equal(url.searchParams.get('unlock'))) {
+        response.writeHead(303, { 'Set-Cookie': `livetts_console=${token}; HttpOnly; SameSite=Strict; Path=/`, Location: url.pathname === '/' ? '/?edit=1' : '/console/' });
         return response.end();
       }
       const cookie = request.headers.cookie?.split(';').map(item => item.trim()).find(item => item.startsWith('livetts_console='))?.slice('livetts_console='.length);
       const authenticated = equal(cookie);
+      if (url.searchParams.get('edit') === '1' && !authenticated) return json(response, 401, { error: '请通过“启动页面编辑.command”打开本地编辑页面。' });
       if ((url.pathname.startsWith('/api/') || url.pathname.startsWith('/console')) && !authenticated) return json(response, 401, { error: '请通过“启动控制台.command”打开管理页面。' });
       if (url.pathname.startsWith('/api/')) {
         if (request.method === 'GET' && url.pathname === '/api/state') return json(response, 200, { ...await store.state(), publication: await releaseState(), repository: REPOSITORY, siteUrl: SITE_URL, copyFields: COPY_FIELDS });
@@ -95,7 +96,10 @@ export async function startConsole({ root = ROOT, port = 7863, publish = publish
         if (error.code !== 'ENOENT' || !authenticated || !relative.startsWith('assets/audio/uploads/')) throw error;
         filename = await store.mediaFile('./' + relative, true);
       }
-      const content = await fs.readFile(filename);
+      let content = await fs.readFile(filename);
+      if (relative === 'index.html' && authenticated && url.searchParams.get('edit') === '1') {
+        content = Buffer.from(content.toString().replace('</head>', '<link rel="stylesheet" href="/console/inline-editor.css"><script src="/console/inline-editor.js" defer></script></head>'));
+      }
       const mime = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.wav': 'audio/wav', '.mp3': 'audio/mpeg', '.ogg': 'audio/ogg', '.m4a': 'audio/mp4', '.flac': 'audio/flac', '.svg': 'image/svg+xml', '.json': 'application/json; charset=utf-8', '.md': 'text/plain; charset=utf-8' }[path.extname(filename)] || 'application/octet-stream';
       response.setHeader('Content-Type', mime);
       response.setHeader('Accept-Ranges', 'bytes');
@@ -114,7 +118,7 @@ export async function startConsole({ root = ROOT, port = 7863, publish = publish
   server.requestTimeout = 120000;
   await new Promise((resolve, reject) => { server.once('error', reject); server.listen(port, '127.0.0.1', resolve); });
   origin = `http://127.0.0.1:${server.address().port}`;
-  return { server, origin, launchUrl: `${origin}/console/?unlock=${token}` };
+  return { server, origin, launchUrl: `${origin}/console/?unlock=${token}`, editUrl: `${origin}/?edit=1&unlock=${token}` };
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
@@ -122,9 +126,9 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
     const app = await startConsole();
     const launchFile = path.join(ROOT, '.generation/console/launch.json');
     await fs.mkdir(path.dirname(launchFile), { recursive: true, mode: 0o700 });
-    await fs.writeFile(launchFile, JSON.stringify({ url: app.launchUrl, pid: process.pid }), { mode: 0o600 });
+    await fs.writeFile(launchFile, JSON.stringify({ url: app.launchUrl, editUrl: app.editUrl, pid: process.pid }), { mode: 0o600 });
     console.log(`LiveTTS 控制台已启动：${app.origin}/console/\n仅限本机；按 Ctrl+C 关闭。`);
-    if (process.argv.includes('--open')) await command('open', [app.launchUrl]);
+    if (process.argv.includes('--open')) await command('open', [process.argv.includes('--edit') ? app.editUrl : app.launchUrl]);
   } catch (error) {
     if (error.code === 'EADDRINUSE' && process.argv.includes('--open')) {
       try {
@@ -134,7 +138,9 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
         if (url.origin !== 'http://127.0.0.1:7863' || url.pathname !== '/console/' || !/^[a-f0-9]{64}$/.test(unlock || '')) throw new Error('无效的启动记录。');
         const response = await fetch(url.origin + '/api/state', { headers: { Cookie: `livetts_console=${unlock}` }, signal: AbortSignal.timeout(3000) });
         if (!response.ok || (await response.json()).repository !== REPOSITORY) throw new Error('未找到本项目的控制台。');
-        await command('open', [launch.url]);
+        const destination = new URL(launch.url);
+        if (process.argv.includes('--edit')) { destination.pathname = '/'; destination.searchParams.set('edit', '1'); }
+        await command('open', [destination.href]);
         console.log('已重新打开正在运行的 LiveTTS 控制台。');
       } catch { console.error('7863 端口已被占用，请关闭旧控制台进程后重试。'); process.exitCode = 1; }
     } else { console.error(error.message); process.exitCode = 1; }

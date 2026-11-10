@@ -58,7 +58,7 @@ export async function publicationFiles() {
     files.set(PREFIX + relative, content);
   }
   for (const relative of ['index.html', 'site.config.js', 'data.js', 'MODEL_CARD.md', 'README.md', '.nojekyll', 'assets', 'scripts', 'deployment/REPOSITORY_README.md']) await add(relative);
-  for (const relative of ['console', '启动控制台.command']) {
+  for (const relative of ['console', '启动控制台.command', '启动页面编辑.command']) {
     try { await fs.access(path.join(ROOT, relative)); }
     catch (error) { if (error.code === 'ENOENT') continue; throw error; }
     await add(relative);

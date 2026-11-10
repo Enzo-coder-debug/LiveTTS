@@ -15,8 +15,8 @@
     preset: { title: '精品音色 · 已发布音频', note: '以下为同一指定预置音色的合成输出，不是附件中的原始演示视频。没有语速对照样例。' },
     all: { title: '全部已发布音频', note: '保留已经确认的情绪、多语种、方言、长文本、拼读与应用场景音频。' },
     zeroshot: { title: 'Zero-shot：语种解耦', note: '附件中的原始演示尚未提供可公开媒体。当前 36 条音频使用预置音色，不将其作为 Zero-shot 克隆对照。', unavailable: true },
-    longform: { title: '长上下文 · 故事与直播样例', note: '展示现有故事旁白与直播文案音频；不是附件中的原始直播长视频，也不构成持续直播时长测试。', cases: ['long-story', 'everyday-scenarios'], filenames: ['long-story-output.wav', 'scene-live.wav'] },
-    podcast: { title: '播客长上下文', note: '现有生活播客独白样例，不是附件中的原始对话演示。', filenames: ['long-podcast.wav'] },
+    longform: { title: '长上下文 · 故事与直播样例', note: '展示现有故事旁白与直播文案音频；不是附件中的原始直播长视频，也不构成持续直播时长测试。', slots: ['story', 'livestream'] },
+    podcast: { title: '播客长上下文', note: '现有生活播客独白样例，不是附件中的原始对话演示。', slots: ['podcast'] },
     phonetics: { title: '声韵母拼读', note: '堵塞的拼音是 d u du s e se。中文引导语与 SSML 拼读分别合成后拼接，真实请求见“文本与参数”。', cases: ['phonetics'] },
     svc: { title: 'SVC 唱歌：同桌的你', note: '该演示在附件中指向内部媒体，尚未提供可公开文件。保留原卡片，不使用其他音频或空音频代替。', unavailable: true },
     humming: { title: '哼唱样例', note: '该演示在附件中指向内部媒体，尚未提供可公开文件。保留原卡片，不使用其他音频或空音频代替。', unavailable: true },
@@ -27,16 +27,47 @@
     const value = config.copy?.zh?.[key];
     if (typeof value === 'string' && value.trim()) {
       if (element.textContent.replace(/\s+/g, ' ').trim() !== value.trim()) element.textContent = value;
+      if (value.includes('\n')) element.style.whiteSpace = 'pre-wrap';
       element.hidden = false;
     }
   }
+
+  for (const element of document.querySelectorAll('[data-page-text]')) {
+    const value = config.pageText?.[element.dataset.pageText];
+    if (typeof value === 'string') {
+      element.textContent = value;
+      if (value.includes('\n')) element.style.whiteSpace = 'pre-wrap';
+    }
+  }
+
+  function applyBlockVisibility() {
+    const hidden = new Set(config.hiddenBlocks || []);
+    for (const block of document.querySelectorAll('[data-block-id]')) block.hidden = hidden.has(block.dataset.blockId);
+    for (const divider of document.querySelectorAll('body > .divider')) {
+      divider.classList.toggle('livetts-block-hidden', Boolean(divider.nextElementSibling?.hidden));
+    }
+    for (const link of document.querySelectorAll('a[href^="#"]')) {
+      const target = document.getElementById(link.getAttribute('href').slice(1));
+      link.classList.toggle('livetts-block-hidden', Boolean(target?.closest('[data-block-id][hidden]')));
+    }
+    for (const container of document.querySelectorAll('.grid, .stats, .steps, .link-list, .table-wrap')) {
+      const children = [...container.children];
+      if (children.length && children.every(child => child.hasAttribute('data-block-id'))) {
+        container.classList.toggle('livetts-block-hidden', children.every(child => child.hidden));
+      }
+    }
+  }
+  window.LIVETTS_BLOCKS = Object.freeze({ apply: applyBlockVisibility });
+  applyBlockVisibility();
 
   function pauseAudio() {
     document.querySelectorAll('audio').forEach(audio => audio.pause());
   }
 
-  function audioCard(output) {
+  function audioCard(output, sample) {
     const card = make('article', 'sample-output');
+    card.dataset.sampleId = sample.id;
+    card.dataset.outputIndex = sample.outputs.indexOf(output);
     const heading = make('div', 'sample-output-heading');
     heading.append(make('h4', '', output.label.zh), make('span', 'sample-language', output.language));
     const transcript = make('p', 'sample-transcript', output.text);
@@ -74,11 +105,13 @@
     if (!entry.unavailable) {
       for (const sample of data.samples) {
         if (entry.cases && !entry.cases.includes(sample.id)) continue;
-        const outputs = sample.outputs.filter(output => playable(output) && (!entry.filenames || entry.filenames.includes(output.src.split('/').at(-1))) && `${sample.title.zh} ${sample.title.en} ${output.label.zh} ${output.label.en} ${output.language} ${output.text}`.toLocaleLowerCase().includes(query));
+        const legacySlots = { 'long-story-output.wav': 'story', 'scene-live.wav': 'livestream', 'long-podcast.wav': 'podcast' };
+        const outputs = sample.outputs.filter(output => playable(output) && (!entry.slots || entry.slots.includes(output.showcaseSlot || legacySlots[output.src.split('/').at(-1)])) && `${sample.title.zh} ${sample.title.en} ${output.label.zh} ${output.label.en} ${output.language} ${output.text}`.toLocaleLowerCase().includes(query));
         if (!outputs.length) continue;
         const group = make('div', 'sample-group');
+        group.dataset.sampleId = sample.id;
         const grid = make('div', 'sample-output-grid');
-        outputs.forEach(output => grid.append(audioCard(output)));
+        outputs.forEach(output => grid.append(audioCard(output, sample)));
         group.append(make('h3', '', sample.title.zh), make('p', 'sample-group-description', sample.description.zh), grid);
         container.append(group);
         count += outputs.length;

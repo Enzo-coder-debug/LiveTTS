@@ -9,3 +9,4 @@
 .sample-empty{padding:25px 0;color:var(--text-dim)}.sample-panel :focus-visible,[data-demo]:focus-visible,[data-internal-resource]:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
 @media(max-width:720px){.sample-panel{padding:18px}.sample-output-grid{grid-template-columns:1fr}.sample-tools{display:block}.sample-tools label{margin-bottom:10px}.sample-panel-head h2{font-size:19px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.livetts-block-hidden,[data-block-id][hidden]{display:none!important}

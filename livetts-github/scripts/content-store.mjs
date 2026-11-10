@@ -35,10 +35,11 @@ export function createStore(root) {
   async function state() {
     const dataSource = await fs.readFile(path.join(root, 'data.js'), 'utf8');
     const configSource = await fs.readFile(path.join(root, 'site.config.js'), 'utf8');
+    const pageSource = await fs.readFile(path.join(root, 'index.html'), 'utf8');
     const context = vm.createContext({ window: {} });
     vm.runInContext(dataSource, context, { timeout: 1000 });
     vm.runInContext(configSource, context, { timeout: 1000 });
-    return { data: JSON.parse(JSON.stringify(context.window.LIVETTS_DATA)), config: JSON.parse(JSON.stringify(context.window.LIVETTS_SITE)), revision: digest(dataSource + '\0' + configSource) };
+    return { data: JSON.parse(JSON.stringify(context.window.LIVETTS_DATA)), config: JSON.parse(JSON.stringify(context.window.LIVETTS_SITE)), revision: digest(dataSource + '\0' + configSource + '\0' + pageSource) };
   }
 
   async function upload(content) {

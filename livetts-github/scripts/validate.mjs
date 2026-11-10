@@ -143,6 +143,23 @@ for (const [, attribute, target] of html.matchAll(/\b(href|src)="([^"]+)"/g)) {
   }
 }
 const script = read("assets/app.js");
+const pageFields = [...html.matchAll(/data-page-text="([a-z0-9-]+)"/g)].map(match => match[1]);
+const blockIds = [...html.matchAll(/data-block-id="([a-z0-9-]+)"/g)].map(match => match[1]);
+check(new Set(blockIds).size === blockIds.length, 'Block IDs must be unique');
+if (config.hiddenBlocks !== undefined) {
+  check(Array.isArray(config.hiddenBlocks), 'Hidden blocks must be an array');
+  if (Array.isArray(config.hiddenBlocks)) {
+    check(new Set(config.hiddenBlocks).size === config.hiddenBlocks.length, 'Hidden block IDs must be unique');
+    for (const key of config.hiddenBlocks) check(typeof key === 'string' && blockIds.includes(key), `Invalid hidden block ${key}`);
+  }
+}
+check(new Set(pageFields).size === pageFields.length, 'Page text fields must be unique');
+if (config.pageText !== undefined) {
+  check(config.pageText && typeof config.pageText === 'object' && !Array.isArray(config.pageText), 'Page text must be an object');
+  for (const [key, value] of Object.entries(config.pageText || {})) {
+    check(pageFields.includes(key) && typeof value === 'string' && value.length <= 10000, `Invalid page text field ${key}`);
+  }
+}
 for (const [, id] of script.matchAll(/select\(["']#([a-z-]+)["']\)/g)) check(ids.includes(id), `Script refers to missing ID ${id}`);
 for (const [, key] of html.matchAll(/data-i18n="([^"]+)"/g)) {
   const occurrences = script.match(new RegExp(`\\b${key}:`, "g")) || [];

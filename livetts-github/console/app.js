@@ -22,7 +22,7 @@
   function updateStatus() {
     select('#save-state').textContent = working ? '正在处理…' : dirty ? '● 有未保存修改' : '✓ 已保存到本地';
     select('#save-state').classList.toggle('dirty', dirty);
-    for (const id of ['save', 'publish', 'restore', 'reload', 'add-output', 'preview']) select('#' + id).disabled = working || !state;
+    for (const id of ['save', 'publish', 'restore', 'reload', 'add-output', 'preview', 'inline-edit']) select('#' + id).disabled = working || !state;
     document.querySelectorAll('#editor input, #editor textarea, #editor button, #settings-form input, #settings-form textarea, #settings-form select').forEach(element => {
       if (working) { element.dataset.wasDisabled ??= String(element.disabled); element.disabled = true; }
       else if (element.dataset.wasDisabled !== undefined) { element.disabled = element.dataset.wasDisabled === 'true'; delete element.dataset.wasDisabled; }
@@ -132,6 +132,8 @@
       working = true; updateStatus();
       try {
         const result = await api('upload', undefined, { method: 'POST', headers: { 'Content-Type': 'audio/wav' }, body: file });
+        const legacySlots = { 'long-story-output.wav': 'story', 'scene-live.wav': 'livestream', 'long-podcast.wav': 'podcast' };
+        if (!output.showcaseSlot && legacySlots[output.src.split('/').at(-1)]) output.showcaseSlot = legacySlots[output.src.split('/').at(-1)];
         output.src = result.src; output.illustrative = false; changed();
         notice(`已暂存 ${file.name}（${result.duration_seconds} 秒）。核对文本和生成参数后保存。`);
       } finally { working = false; renderEditor(); renderList(); updateStatus(); }
@@ -229,6 +231,7 @@
   select('#search').addEventListener('input', renderList);
   document.querySelectorAll('[data-view]').forEach(item => item.addEventListener('click', () => switchView(item.dataset.view)));
   select('#save').addEventListener('click', act(save));
+  select('#inline-edit').addEventListener('click', act(async () => { await save(); window.location.assign('/?edit=1'); }));
   select('#reload').addEventListener('click', act(async () => { if (dirty && !confirm('放弃未保存的修改并重新加载？')) return; await load(); notice('已重新加载本地文件。'); }));
   select('#preview').addEventListener('click', act(async () => { await save(); select('#preview-frame').src = '/?preview=' + Date.now(); select('#preview-dialog').showModal(); }));
   select('#close-preview').addEventListener('click', () => { select('#preview-dialog').close(); select('#preview-frame').src = 'about:blank'; });

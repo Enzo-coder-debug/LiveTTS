@@ -2,6 +2,8 @@
 
 LiveTTS 模型展示站与语音体验页，独立公开项目。
 
+本地维护支持直接在页面上编辑：双击 `livetts-github/启动页面编辑.command`，修改文字、表格与音频后先保存到本地，再自行确认“同步到官网”。编辑器仅在经过验证的本地服务页面中出现，公开网站没有编辑入口。操作说明见 `livetts-github/README.md`。
+
 - [GitHub Pages 展示站](https://Enzo-coder-debug.github.io/LiveTTS/)
 - [Hugging Face 静态体验页](https://huggingface.co/spaces/EnzELI/LiveTTS)
 - [添加或替换样音](livetts-github/assets/audio/README.md)

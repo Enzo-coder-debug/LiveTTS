@@ -8,7 +8,7 @@ window.LIVETTS_SITE = {
   "releaseLabelZh": "研究展示",
   "copy": {
     "zh": {
-      "badge": "面向真实产品环境的生成式语音基础模型",
+      "badge": "面向真实环境的生成式情感语音模型",
       "heroFirst": "让每一句话",
       "heroSecond": "都有真人的温度",
       "heroIntro": "输入一段文本，输出自然人声。",
@@ -19,8 +19,8 @@ window.LIVETTS_SITE = {
       "sampleNote": "合成语音 · 指定预置音色 · 请求版本 2.8.1 · 24 kHz / PCM16。本组不是零样本克隆对照，亦不代表独立评测结论。",
       "capabilityTitle": "八项核心能力，覆盖真实业务全链路",
       "capabilityDescription": "从零样本克隆到篇章级长音频，从情感表达到副语言细节，LiveTTS 把「像真人」拆解成可控制、可复用的能力模块。",
-      "evalTitle": "业务应用与盲评结果",
-      "evalDescription": "在真实业务场景中与真人录音、主流竞品做对照评测。",
+      "evalTitle": "业务应用与GSB结果",
+      "evalDescription": "在真实业务场景中，与真人录音、领先模型做MOS评测。",
       "startTitle": "四步完成接入",
       "startDescription": "",
       "responsible": "让每一句话都有真人的温度"
@@ -44,5 +44,47 @@ window.LIVETTS_SITE = {
       "responsible": "Use only authorized voices and recordings. Disclose synthetic speech where appropriate. Do not impersonate people or mislead listeners."
     }
   },
-  "layout": "attachment"
+  "layout": "attachment",
+  "pageText": {
+    "p0044": "",
+    "p0042": "",
+    "p0051": " 清嗓子等副语言标签。",
+    "p0058": "面向中文教学，支持声母、韵母、整体认读音节精确发音，如「中」可精确指定为 ",
+    "p0143": "营销场景（电话客服与外呼）",
+    "p0191": "LiveTTS 与真人录音的挂断率差距已收窄到 ",
+    "p0209": "直播场景（数字人主播）",
+    "p0236": "，其中自然度（0.66 vs 0.29）与情感表达力（0.58 vs 0.28）接近两倍的优势。",
+    "p0195": "\n",
+    "p0194": "\n",
+    "p0196": "\n",
+    "p0197": "\n",
+    "p0198": "\n",
+    "p0206": "\n",
+    "p0201": "\n",
+    "p0202": "\n",
+    "p0205": "\n",
+    "p0207": "",
+    "p0203": "",
+    "p0199": "\n",
+    "p0200": "\n",
+    "p0204": "\n",
+    "p0208": "\n",
+    "p0267": "\n",
+    "p0269": "\n",
+    "p0268": "\n",
+    "p0270": "\n",
+    "p0238": "通用场景（情感陪伴等）",
+    "p0271": "\n",
+    "p0272": "\n",
+    "p0305": "语种 / 方言 / 情绪 / 语速全解耦",
+    "p0306": "同一个音色，可切换多语种、多方言、多情绪与不同语速，人物风格保持一致。",
+    "p0327": "\n",
+    "p0080": "这是与主流方案最本质的差异。"
+  },
+  "hiddenBlocks": [
+    "block-027",
+    "block-032",
+    "block-034",
+    "block-058"
+  ]
 };
