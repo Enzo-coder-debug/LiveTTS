@@ -77,6 +77,8 @@ for (const category of data.categories) {
 }
 const sampleIds = new Set();
 let missingMedia = 0;
+let missingReferences = 0;
+let missingOutputs = 0;
 for (const sample of data.samples) {
   check(/^[a-z0-9-]+$/.test(sample.id) && !sampleIds.has(sample.id), `Invalid or duplicate sample ${sample.id}`);
   sampleIds.add(sample.id);
@@ -87,7 +89,7 @@ for (const sample of data.samples) {
   check(sample.reference && typeof sample.reference.transcript === "string", `${sample.id} reference transcript must be a string`);
   localized(sample.reference?.label, `${sample.id} reference label`);
   mediaPath(sample.reference?.src, `${sample.id} reference`);
-  if (!sample.reference?.src) missingMedia += 1;
+  if (!sample.reference?.src) { missingMedia += 1; missingReferences += 1; }
   check(Array.isArray(sample.outputs) && sample.outputs.length > 0, `${sample.id} has no output entries`);
   for (const [index, output] of (sample.outputs || []).entries()) {
     const label = `${sample.id} output ${index + 1}`;
@@ -97,7 +99,7 @@ for (const sample of data.samples) {
     check(typeof output.model === "string" && typeof output.settings === "string", `${label} metadata must use strings`);
     check(typeof output.illustrative === "boolean", `${label} needs an explicit illustrative flag`);
     mediaPath(output.src, label);
-    if (!output.src) missingMedia += 1;
+    if (!output.src) { missingMedia += 1; missingOutputs += 1; }
     if (output.src) {
       check(output.model.trim() && output.settings.trim(), `${label} needs model version and synthesis settings before adding audio`);
       check(output.illustrative === false, `${label} must replace the illustrative text with the actual transcript`);
@@ -133,7 +135,7 @@ for (const [, attribute, target] of html.matchAll(/\b(href|src)="([^"]+)"/g)) {
   }
 }
 const script = read("assets/app.js");
-for (const [, id] of script.matchAll(/select\("#([a-z-]+)"\)/g)) check(ids.includes(id), `Script refers to missing ID ${id}`);
+for (const [, id] of script.matchAll(/select\(["']#([a-z-]+)["']\)/g)) check(ids.includes(id), `Script refers to missing ID ${id}`);
 for (const [, key] of html.matchAll(/data-i18n="([^"]+)"/g)) {
   const occurrences = script.match(new RegExp(`\\b${key}:`, "g")) || [];
   check(occurrences.length >= 2, `Missing bilingual copy for ${key}`);
@@ -162,7 +164,8 @@ function inspectPublicFile(relative) {
 }
 for (const entry of ["index.html", "site.config.js", "data.js", "MODEL_CARD.md", "README.md", ".nojekyll", "assets"]) inspectPublicFile(entry);
 
-if (missingMedia) warnings.push(`${missingMedia} audio slots are empty; the UI explicitly marks them as pending.`);
+if (missingReferences) warnings.push(`${missingReferences} original reference recordings are unpublished; empty reference panels are hidden and the limitation is disclosed.`);
+if (missingOutputs) warnings.push(`${missingOutputs} output entries have no playable file and are excluded from the audio gallery and counts.`);
 if (!config.spaceUrl) warnings.push("Hugging Face Space URL is not configured; the demo button opens setup information.");
 if (release) {
   check(missingMedia === 0, "Release requires all listed reference and output audio slots to be filled; remove unready cases first");

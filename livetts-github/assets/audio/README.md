@@ -1,23 +1,29 @@
-# 已合成音频与参考录音补充
+# 音频示例
 
-2026-11-10 已通过现有本地 LiveTTS HTTP 脚本实际合成 13 条输出，请求模型版本 `2.8.1`，沿用同一配置音色（公开标记为 `Configured voice A`，不公开内部音色 ID）。7 条原始参考录音仍为空：`data.js` 中对应的 `src: ""` 显示「等待公开音频」，不会拿生成结果冒充原始录音。
+2026-11-10：39 条真实 API 输出，共约 291.33 秒。请求版本 `2.8.1`，同一配置音色公开标记为 `Configured voice A`，不公开内部音色 ID。全部为 24 kHz 单声道 PCM16 WAV，语速 `1.0`、音量参数 `4.0`。
 
-所有输出为单声道 24 kHz、16 位 PCM WAV，语速 `1.0`、接口音量参数 `4.0`。情感对照分别请求 `温暖`、`高兴`、`悲伤`；其余请求 `中立`。四川话使用 `lang=sichuan`，粤语使用 `lang=yue`，英语使用 `lang=en`，普通话使用 `lang=zh`。日语及中英混合没有指定 `lang`，由服务自动判断。
+| 案例 | 可播放输出 |
+| --- | ---: |
+| 音色延续 · 普通话、英语 | 2 |
+| 同文情感对照 | 10 |
+| 副语言 AudioTag | 5 |
+| 7 种外语与中英混合 | 8 |
+| 地方方言 | 8 |
+| 故事、生活播客 | 2 |
+| 拼音教学 | 1 |
+| 客服、直播、博物馆导览 | 3 |
 
-全部文件通过格式解码、非静音与削波检查；未进行人工逐条听审、逐字 ASR 复核或独立音色相似度评测。标签是请求控制，不构成模型效果认证。原始 API 响应及凭证不在本目录中。
+文件时长和 SHA-256 见 [生成记录](GENERATION.md)。输入文本与请求参数逐条记录在 `data.js`，可在页面的「文本与参数」中展开。
 
-后续将获授权的文件上传到本目录，再在仓库的 `livetts-github/data.js` 中替换对应 `src`，例如 `./assets/audio/one-voice-reference.wav`。建议文件命名如下：
+韩语与阿拉伯语请求返回空音频，保留输入但不显示空卡片，也不计入可播放数量。其他成功返回全部保留；未按主观效果筛选。原始参考录音均未公开，不能独立复核音色克隆相似度。
 
-| 案例 ID | 参考音频 | 合成音频 |
-| --- | --- | --- |
-| `one-voice` | `one-voice-reference.wav` | `one-voice-zh.wav`、`one-voice-en.wav` |
-| `emotional-range` | `emotional-range-reference.wav` | `emotion-warm.wav`、`emotion-excited.wav`、`emotion-sad.wav` |
-| `audio-tags` | `audio-tags-reference.wav` | `audio-tags-output.wav` |
-| `across-languages` | `across-languages-reference.wav` | `language-en.wav`、`language-ja.wav`、`language-mixed.wav` |
-| `local-voices` | `local-voices-reference.wav` | `dialect-sichuan.wav`、`dialect-cantonese.wav` |
-| `long-story` | `long-story-reference.wav` | `long-story-output.wav` |
-| `phonetics` | `phonetics-reference.wav` | `phonetics-output.wav` |
+文件检查不等于语言、逐字准确率、情感或副语言效果认证，仍需团队人工听审。原始 API 响应、内部音色 ID 和凭证不得放入本目录。
 
-填写参考音频 `transcript`；合成音频填写实际 `text`、`model`、`settings`，并将 `illustrative` 改为 `false`。不要将示例文字当作真实转写。文件名可以自定义，路径必须与 `src` 一致。
+## 后续替换
 
-GitHub Pages 展示页与 Hugging Face 静态工作室是两个不同页面。此目录的固定样音属于 GitHub 展示页；Hugging Face 的生成音频区需另行接入真实后端。
+1. 放入获准公开的音频文件。
+2. 在 `data.js` 为相应输出填写相对路径 `./assets/audio/文件名.wav`、实际输入文本、请求版本和参数，并设置 `illustrative: false`。
+3. 补充真实参考时，填写该案例的 `reference.src` 与 `reference.transcript`；有文件时页面自动提供折叠的参考试听。
+4. 运行 `node scripts/validate.mjs`，检查文件后发布。不得用另一模型、静音或合成结果冒充 LiveTTS 输出或原始参考。
+
+本目录只供 GitHub 展示站使用，不改变 Hugging Face 静态预览的后端接入状态。

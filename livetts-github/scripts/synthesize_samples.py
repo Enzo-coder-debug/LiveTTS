@@ -21,12 +21,25 @@ from urllib.parse import urlsplit
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 CONTROLS = {
     "one-voice": [("one-voice-zh.wav", "中立", "zh"), ("one-voice-en.wav", "中立", "en")],
-    "emotional-range": [("emotion-warm.wav", "温暖", "zh"), ("emotion-excited.wav", "高兴", "zh"), ("emotion-sad.wav", "悲伤", "zh")],
-    "audio-tags": [("audio-tags-output.wav", "中立", "zh")],
-    "across-languages": [("language-en.wav", "中立", "en"), ("language-ja.wav", "中立", ""), ("language-mixed.wav", "中立", "")],
-    "local-voices": [("dialect-sichuan.wav", "中立", "sichuan"), ("dialect-cantonese.wav", "中立", "yue")],
-    "long-story": [("long-story-output.wav", "中立", "zh")],
+    "emotional-range": [
+        ("emotion-warm.wav", "温暖", "zh"), ("emotion-excited.wav", "高兴", "zh"), ("emotion-sad.wav", "悲伤", "zh"),
+        ("emotion-neutral.wav", "中立", "zh"), ("emotion-angry.wav", "愤怒", "zh"), ("emotion-fearful.wav", "恐惧", "zh"),
+        ("emotion-surprised.wav", "惊讶", "zh"), ("emotion-worried.wav", "担忧", "zh"), ("emotion-expectant.wav", "期待", "zh"), ("emotion-urgent.wav", "着急", "zh"),
+    ],
+    "audio-tags": [("audio-tags-output.wav", "中立", "zh"), ("tag-laughter.wav", "中立", "zh"), ("tag-sigh.wav", "中立", "zh"), ("tag-cough.wav", "中立", "zh"), ("tag-throat.wav", "中立", "zh")],
+    "across-languages": [
+        ("language-en.wav", "中立", "en"), ("language-ja.wav", "中立", ""), ("language-mixed.wav", "中立", ""),
+        ("language-de.wav", "中立", ""), ("language-fr.wav", "中立", ""), ("language-es.wav", "中立", ""), ("language-nl.wav", "中立", ""),
+        ("language-ko.wav", "中立", ""), ("language-ar.wav", "中立", ""), ("language-id.wav", "中立", ""),
+    ],
+    "local-voices": [
+        ("dialect-sichuan.wav", "中立", "sichuan"), ("dialect-cantonese.wav", "中立", "yue"), ("dialect-dongbei.wav", "中立", "dongbei"),
+        ("dialect-henan.wav", "中立", "henan"), ("dialect-tianjin.wav", "中立", "tianjin"), ("dialect-shaanxi.wav", "中立", "shaanxi"),
+        ("dialect-shanghai.wav", "中立", "shanghai"), ("dialect-min.wav", "中立", "min"),
+    ],
+    "long-story": [("long-story-output.wav", "中立", "zh"), ("long-podcast.wav", "中立", "zh")],
     "phonetics": [("phonetics-output.wav", "中立", "zh")],
+    "everyday-scenarios": [("scene-service.wav", "温暖", "zh"), ("scene-live.wav", "高兴", "zh"), ("scene-museum.wav", "中立", "zh")],
 }
 
 

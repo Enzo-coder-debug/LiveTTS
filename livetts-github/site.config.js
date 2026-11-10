@@ -1,5 +1,5 @@
 window.LIVETTS_SITE = {
-  defaultLanguage: "en",
+  defaultLanguage: "zh",
   spaceUrl: "https://huggingface.co/spaces/EnzELI/LiveTTS",
   repositoryUrl: "https://github.com/Enzo-coder-debug/LiveTTS",
   technicalReportUrl: "",
