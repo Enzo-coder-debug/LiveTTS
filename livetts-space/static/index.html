@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Meet LiveTTS. An interactive text-to-speech research demo from the LiveTTS team at JD. Write, listen, and find your voice.">
+  <meta name="theme-color" content="#f8f8f5">
+  <title>LiveTTS — Words, brought to life.</title>
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <svg class="icon-definitions" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="m9 5 11 7-11 7Z"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M5 16v4h14v-4"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24"><path d="m7 7-5 5 5 5m10-10 5 5-5 5M14 4l-4 16"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 3 2.4 6.6L21 12l-6.6 2.4L12 21l-2.4-6.6L3 12l6.6-2.4Z"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V4H4v12h4"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7v1"/></symbol>
+    <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M3 6h7m4 0h7M3 18h11m4 0h3"/><circle cx="12" cy="6" r="2"/><circle cx="16" cy="18" r="2"/></symbol>
+    <symbol id="i-headphones" viewBox="0 0 24 24"><path d="M4 14v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="12" width="4" height="8" rx="2"/><rect x="17" y="12" width="4" height="8" rx="2"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#text-input" data-i18n="skip">Skip to playground</a>
+  <header class="site-header shell">
+    <a class="wordmark" href="/" aria-label="LiveTTS home">
+      <span class="logo-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+      <span>Live<span class="logo-light">TTS</span><span class="logo-dot">.</span></span>
+    </a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a class="nav-active" href="#playground" data-i18n="playground">Playground</a>
+      <a href="#about" data-i18n="about">About LiveTTS</a>
+      <button class="nav-button" id="api-nav"><svg class="icon"><use href="#i-code"/></svg><span data-i18n="api">API</span></button>
+    </nav>
+    <div class="header-actions">
+      <span class="research-badge"><span class="status-dot"></span><span data-i18n="research">Research preview</span></span>
+      <button class="language-toggle" id="language-toggle" aria-label="Switch to Chinese"><span id="language-en" class="selected">EN</span><span class="language-divider">/</span><span id="language-zh">中文</span></button>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="small-dash"></span><span data-i18n="eyebrow">A LITTLE TEXT. A LOT OF EXPRESSION.</span></p>
+        <h1 id="hero-title"><span data-i18n="hero1">Words, brought</span><br><span data-i18n="hero2">to </span><em data-i18n="hero3">life.</em><span class="hero-asterisk" aria-hidden="true">✳</span></h1>
+        <p class="hero-description" data-i18n="heroDescription">A new voice for your ideas. Explore speech synthesis from the LiveTTS team at JD — one sentence at a time.</p>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <span class="art-plus plus-one">+</span><span class="art-plus plus-two">+</span>
+        <div class="art-label">TEXT IN<span>↗</span></div>
+        <div class="voice-art"><svg id="hero-wave" viewBox="0 0 360 150"></svg></div>
+        <div class="art-bottom"><span class="art-line"></span>VOICE OUT <span class="art-tiny-dot"></span></div>
+      </div>
+    </section>
+
+    <section class="playground-section" id="playground" aria-label="Speech playground">
+      <div class="section-heading"><div class="section-title"><span class="section-number">01 /</span><h2 data-i18n="studioTitle">The speech studio</h2></div><span class="studio-caption" data-i18n="studioCaption">YOUR WORDS. A NEW WAY TO HEAR THEM.</span></div>
+      <div class="status-banner" id="status-banner" role="status"><svg class="icon"><use href="#i-info"/></svg><p id="status-text" data-i18n="connecting">Checking demo availability…</p><button id="setup-button" data-i18n="setup">Setup details</button></div>
+      <form id="generation-form" class="studio-card">
+        <div class="composer">
+          <div class="panel-heading"><label for="text-input" data-i18n="yourText">Your text</label><span class="format-badge">TEXT → SPEECH</span></div>
+          <div class="prompt-tabs" role="group" aria-label="Example language">
+            <button type="button" class="prompt-tab active" data-prompt="english" aria-pressed="true">English</button>
+            <button type="button" class="prompt-tab" data-prompt="chinese" aria-pressed="false">中文</button>
+            <button type="button" class="prompt-tab" data-prompt="mixed" aria-pressed="false" data-i18n="mixed">Mixed</button>
+          </div>
+          <textarea id="text-input" name="text" maxlength="1000" spellcheck="false" aria-describedby="text-hint character-count" required>Some ideas are better heard than read. A quiet story, a familiar greeting, a thought that makes you smile. Give your words a voice, and see where they take you.</textarea>
+          <div class="composer-bottom"><span id="text-hint" data-i18n="textHint">Write something worth listening to.</span><div class="text-tools"><button type="button" id="clear-text" data-i18n="clear">Clear</button><span id="character-count" aria-live="polite">0 / 500</span></div></div>
+          <div class="generation-footer"><p class="privacy-note"><svg class="icon"><use href="#i-lock"/></svg><span data-i18n="privacyShort">Please don’t include confidential information.</span></p><button class="generate-button" id="generate-button" type="submit" disabled><svg class="icon" id="generate-icon"><use href="#i-spark"/></svg><span id="generate-label" data-i18n="generate">Generate speech</span><span class="key-hint" aria-hidden="true">↵</span></button></div>
+        </div>
+
+        <aside class="voice-panel">
+          <div class="panel-heading"><span data-i18n="voiceSettings">Voice settings</span><svg class="icon muted"><use href="#i-sliders"/></svg></div>
+          <div class="voice-profile"><div class="voice-avatar" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div><div><span class="tiny-label" data-i18n="selectedVoice">SELECTED VOICE</span><h3 id="voice-title">Studio</h3><p id="voice-description" data-i18n="voicePreview">Configure an approved API voice</p></div><span class="voice-check"><svg class="icon"><use href="#i-check"/></svg></span></div>
+          <label class="field-label" for="voice-select" data-i18n="voice">Voice</label>
+          <select id="voice-select" name="voice" disabled><option value="">Studio · Preview</option></select>
+          <div class="speed-label"><label class="field-label" for="speed-input" data-i18n="speed">Speaking speed</label><output id="speed-output" for="speed-input">1.00×</output></div>
+          <input id="speed-input" type="range" min="0.75" max="1.25" step="0.05" value="1" aria-label="Speaking speed">
+          <div class="range-labels"><span>0.75×</span><span data-i18n="natural">Default</span><span>1.25×</span></div>
+          <div class="model-row"><span data-i18n="model">Model</span><span class="model-name"><span class="status-dot"></span><span id="model-name">LiveTTS</span></span></div>
+          <div class="output-format"><span data-i18n="output">Output</span><span>WAV · 24 kHz · Mono</span></div>
+          <div class="password-field" id="password-field" hidden><label for="demo-password" data-i18n="accessCode">Demo access code</label><input id="demo-password" type="password" autocomplete="off" maxlength="200" placeholder="••••••••"></div>
+          <p class="voice-disclaimer" data-i18n="voiceDisclaimer">A curated voice collection. Public audio uploads are not enabled in this demo.</p>
+        </aside>
+      </form>
+      <div class="error-banner" id="error-banner" role="alert" hidden></div>
+
+      <section class="audio-card" aria-labelledby="audio-title">
+        <div class="audio-header"><div class="section-title"><svg class="icon"><use href="#i-headphones"/></svg><h3 id="audio-title" data-i18n="yourAudio">Your audio</h3><span class="audio-state" id="audio-state" data-i18n="waiting">WAITING FOR YOUR WORDS</span></div><a class="download-button" id="download-button" download="livetts.wav" aria-disabled="true" tabindex="-1"><svg class="icon"><use href="#i-download"/></svg><span data-i18n="download">Download WAV</span></a></div>
+        <div class="player"><button class="play-button" id="play-button" disabled type="button" aria-label="Play generated speech"><svg class="icon"><use href="#i-play"/></svg></button><div class="waveform-wrap"><canvas id="waveform" aria-hidden="true"></canvas><p id="waveform-caption" data-i18n="waveformCaption">A little silence before something good.</p><input id="seek-input" type="range" min="0" max="1000" value="0" aria-label="Audio position" disabled></div><span class="player-time" id="player-time">0:00 <span>/ 0:00</span></span></div>
+        <div class="audio-metadata"><span id="audio-detail" data-i18n="audioDetail">Generated audio will appear here. Nothing is played automatically.</span><div id="audio-stats" hidden><span><span data-i18n="generatedIn">Generated in</span> <strong id="generation-time">—</strong></span><span class="metadata-divider">/</span><span>24 kHz</span></div></div>
+        <audio id="audio" preload="metadata"></audio>
+      </section>
+      <div class="history-section" id="history-section" hidden><div class="history-heading"><h3 data-i18n="recent">This session</h3><button id="clear-history" data-i18n="clearHistory">Clear history</button></div><div id="history-list"></div><p data-i18n="historyNote">Up to 5 clips, in browser memory only. Refreshing clears this session.</p></div>
+    </section>
+
+    <section class="inspiration-section" aria-labelledby="inspiration-title"><div class="section-heading"><div class="section-title"><span class="section-number">02 /</span><h2 id="inspiration-title" data-i18n="inspiration">Start with a little inspiration</h2></div><span class="studio-caption" data-i18n="inspirationCaption">PICK A PROMPT. MAKE IT YOURS.</span></div>
+      <div class="inspiration-grid">
+        <button class="inspiration-card" data-example="story"><span class="scene-type"><span class="scene-symbol scene-story">Aa</span><span data-i18n="storyType">STORYTELLING</span><svg class="icon"><use href="#i-arrow"/></svg></span><h3 data-i18n="storyTitle">A moment of wonder</h3><p data-i18n="storyText">“At the end of the street, a tiny bookshop kept its lights on just a little longer…”</p><span class="scene-language">English</span></button>
+        <button class="inspiration-card" data-example="chinese"><span class="scene-type"><span class="scene-symbol scene-chinese">声</span><span data-i18n="chineseType">EVERYDAY MOMENTS</span><svg class="icon"><use href="#i-arrow"/></svg></span><h3 data-i18n="chineseTitle">日常的一点温柔</h3><p data-i18n="chineseText">“今天的风刚刚好。忙完手头的事，就去楼下走走吧，给自己留一点慢下来的时间。”</p><span class="scene-language">中文</span></button>
+        <button class="inspiration-card" data-example="mixed"><span class="scene-type"><span class="scene-symbol scene-mixed">↔</span><span data-i18n="mixedType">CODE-SWITCHING</span><svg class="icon"><use href="#i-arrow"/></svg></span><h3 data-i18n="mixedTitle">Across languages</h3><p data-i18n="mixedText">“Welcome to a brand new day. 今天，也给自己一个小小的期待。Let’s make it a good one.”</p><span class="scene-language">English + 中文</span></button>
+      </div>
+      <p class="example-disclaimer" data-i18n="exampleDisclaimer">Prompts are for exploration, not benchmark results. Language and voice quality depend on the configured model.</p>
+    </section>
+
+    <section class="about-section" id="about"><div class="about-intro"><span class="eyebrow" data-i18n="behindVoice">BEHIND THE VOICE</span><h2><span data-i18n="aboutTitle1">Built from scratch.</span><br><em data-i18n="aboutTitle2">Made to be heard.</em></h2><p data-i18n="aboutDescription">LiveTTS is a text-to-speech model developed by the LiveTTS team at JD. This playground is a space to explore its voice, with your own words.</p><button class="text-link" id="api-about"><span data-i18n="exploreApi">Explore the demo API</span><svg class="icon"><use href="#i-arrow"/></svg></button><a class="text-link" id="contact-link" hidden rel="noopener noreferrer" target="_blank"><span data-i18n="contact">Contact the team</span><svg class="icon"><use href="#i-arrow"/></svg></a></div><div class="about-principles"><div><span>01</span><h3 data-i18n="principle1">Your text, not a canned recording.</h3><p data-i18n="principle1Text">Every synthesis request goes to the configured LiveTTS API. There are no substitute voices or simulated results.</p></div><div><span>02</span><h3 data-i18n="principle2">A preview, not a performance claim.</h3><p data-i18n="principle2Text">Listen for yourself. This demo does not claim a benchmark ranking or a verified human-preference score.</p></div><div><span>03</span><h3 data-i18n="principle3">Thoughtfully shared voices.</h3><p data-i18n="principle3Text">Only team-approved presets are available. Reference-audio upload and public voice cloning are not enabled.</p></div></div></section>
+    <footer class="footer"><a class="wordmark footer-wordmark" href="/">LiveTTS<span class="logo-dot">.</span></a><span data-i18n="footer">A research preview by the LiveTTS team at JD.</span><button id="privacy-button" data-i18n="privacy">Privacy & responsible use</button></footer>
+  </main>
+
+  <dialog id="info-dialog" aria-labelledby="dialog-title"><div class="dialog-header"><span class="eyebrow">LIVETTS / STUDIO</span><button class="close-button" id="close-dialog" aria-label="Close dialog"><svg class="icon"><use href="#i-close"/></svg></button></div><h2 id="dialog-title"></h2><div id="dialog-body"></div></dialog>
+  <div id="toast" class="toast" role="status" hidden></div>
+</body>
+</html>

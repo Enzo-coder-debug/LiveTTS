@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="LiveTTS: expressive, controllable speech synthesis from the LiveTTS team at JD. Explore zero-shot voice cloning, multilingual speech, dialects, and research evaluations.">
+  <meta name="theme-color" content="#123a40">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; media-src 'self' https:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta property="og:title" content="LiveTTS · One voice. Many possibilities.">
+  <meta property="og:description" content="A research showcase of expressive, controllable speech synthesis by the LiveTTS team at JD.">
+  <meta property="og:type" content="website">
+  <title>LiveTTS · One voice. Many possibilities.</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./assets/style.css">
+  <script src="./site.config.js" defer></script>
+  <script src="./data.js" defer></script>
+  <script src="./assets/app.js" defer></script>
+</head>
+<body>
+  <svg class="icon-library" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+    <symbol id="external" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></symbol>
+    <symbol id="play" viewBox="0 0 24 24"><path d="m9 5 11 7-11 7Z"/></symbol>
+    <symbol id="pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></symbol>
+    <symbol id="headphones" viewBox="0 0 24 24"><path d="M4 14v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="12" width="4" height="8" rx="2"/><rect x="17" y="12" width="4" height="8" rx="2"/></symbol>
+    <symbol id="copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V4H4v12h4"/></symbol>
+    <symbol id="download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M5 16v4h14v-4"/></symbol>
+    <symbol id="document" viewBox="0 0 24 24"><path d="M14 3H5v18h14V8l-5-5Zm0 0v6h5M8 13h8m-8 4h6"/></symbol>
+    <symbol id="close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+    <symbol id="github" viewBox="0 0 24 24"><path d="M9 20c-5 1-5-3-7-3m14 5v-4c0-1-.2-2-1-2.5 3-.3 6-1.5 6-6 0-1.3-.5-2.5-1.3-3.4.2-.5.6-2-.2-3.6 0 0-1.2-.4-3.8 1.3a13 13 0 0 0-7 0C6 2 4.8 2.5 4.8 2.5c-.8 1.6-.4 3.1-.2 3.6C3.8 7 3.3 8.2 3.3 9.5c0 4.5 3 5.7 6 6-.8.5-1 1.5-1 2.5v4"/></symbol>
+    <symbol id="globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c-6 5-6 13 0 18 6-5 6-13 0-18Z"/></symbol>
+  </svg>
+  <a class="skip-link" href="#overview" data-i18n="skip">Skip to research overview</a>
+  <header class="hero" id="top">
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="container topbar">
+      <a class="brand" href="#top"><span class="brand-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>LiveTTS<span class="brand-divider"></span><span class="brand-context" data-i18n="research">RESEARCH</span></a>
+      <div class="topbar-actions"><span class="release-badge" id="release-label">Research showcase</span><button class="language-button" id="language-toggle" aria-label="Switch to Chinese">EN <span>/</span> 中文</button><a id="repository-link" class="icon-button" aria-label="GitHub repository" hidden><svg class="icon"><use href="#github"/></svg></a></div>
+    </div>
+    <div class="hero-content container">
+      <p class="eyebrow"><span></span><span data-i18n="heroEyebrow">GENERATIVE SPEECH FOUNDATION MODEL</span></p>
+      <h1>Live<span>TTS</span><span class="hero-period">.</span></h1>
+      <p class="hero-title" data-i18n="heroTitle">One voice. Many possibilities.</p>
+      <p class="hero-description" data-i18n="heroDescription">Expressive, controllable speech — from a few seconds of reference audio to a world of languages, emotions, and stories.</p>
+      <p class="team" data-i18n="team">LiveTTS Development Team · JD</p>
+      <div class="hero-actions"><a href="#samples" class="button button-light"><svg class="icon"><use href="#headphones"/></svg><span data-i18n="exploreSamples">Explore audio demos</span></a><button class="button button-outline" id="hero-demo"><span data-i18n="tryDemo">Interactive playground</span><svg class="icon"><use href="#external"/></svg></button><a class="button button-outline" id="paper-link" hidden><svg class="icon"><use href="#document"/></svg><span data-i18n="paper">Technical report</span></a></div>
+      <div class="hero-wave" aria-hidden="true"><svg id="hero-wave" viewBox="0 0 960 100" preserveAspectRatio="none"></svg><span>REFERENCE → EXPRESSION</span></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="overview container" id="overview" aria-labelledby="overview-title">
+      <div class="overview-card">
+        <div class="overview-heading"><span class="section-icon">✳</span><h2 id="overview-title" data-i18n="overviewTitle">Meet LiveTTS</h2><span class="small-pill" data-i18n="overviewPill">AT A GLANCE</span></div>
+        <p class="overview-text" data-i18n="overviewText">A generative speech model built around a simple idea: a voice should not be limited to a single language, dialect, or emotion. LiveTTS combines zero-shot voice cloning with expressive control and long-form synthesis, bringing a consistent vocal identity to different ways of speaking.</p>
+        <div class="stats"><div><strong>3–15<span>s</span></strong><p data-i18n="statPrompt">Reference audio for cloning</p></div><div><strong>10</strong><p data-i18n="statDialects">Chinese dialects</p></div><div><strong>8<span>+</span></strong><p data-i18n="statLanguages">Foreign languages</p></div><div><strong>11<span>+</span></strong><p data-i18n="statStyles">Emotion & style instructions</p></div></div>
+        <p class="source-note" data-i18n="statsNote">Capabilities as described in the team-provided overview. 3–15 seconds refers to input audio duration, not generation latency.</p>
+      </div>
+    </section>
+
+    <nav class="section-nav" aria-label="Page sections"><div class="container"><a href="#overview" class="active" data-i18n="navOverview">Overview</a><a href="#capabilities" data-i18n="navCapabilities">Capabilities</a><a href="#samples" data-i18n="navSamples">Audio demos</a><a href="#evaluation" data-i18n="navEvaluation">Evaluation</a><a href="#resources" data-i18n="navResources">Resources</a><span class="nav-end">LIVETTS / RESEARCH</span></div></nav>
+
+    <section class="section container" id="capabilities">
+      <div class="section-heading"><div><p class="eyebrow dark"><span></span><span data-i18n="capEyebrow">DESIGNED FOR EXPRESSION</span></p><h2><span data-i18n="capTitle1">Keep the voice.</span><br><em data-i18n="capTitle2">Change the possibilities.</em></h2></div><p class="section-description" data-i18n="capDescription">Control language, dialect, emotion, and speaking rate independently — without collecting a new recording for every combination.</p></div>
+      <div class="capability-grid">
+        <article class="capability-card"><div class="cap-top"><span class="cap-symbol">◉</span><span>01</span></div><h3 data-i18n="cap1">Zero-shot voice cloning</h3><p data-i18n="cap1Text">A short voice reference, new words. Accent-enhanced and speaker-identity inference modes support different fidelity and deployment needs.</p><span class="cap-tag">VOICE IDENTITY</span></article>
+        <article class="capability-card"><div class="cap-top"><span class="cap-symbol">Aa</span><span>02</span></div><h3 data-i18n="cap2">Multilingual & dialect control</h3><p data-i18n="cap2Text">Explore multiple languages and Chinese dialects through a shared voice, rather than a separate preset for every locale.</p><span class="cap-tag">CROSS-LINGUAL</span></article>
+        <article class="capability-card"><div class="cap-top"><span class="cap-symbol">✳</span><span>03</span></div><h3 data-i18n="cap3">Emotion & paralinguistics</h3><p data-i18n="cap3Text">Shape delivery with style instructions. Add laughter, sighs, and other non-verbal cues directly inside the text.</p><span class="cap-tag">EXPRESSIVE CONTROL</span></article>
+        <article class="capability-card"><div class="cap-top"><span class="cap-symbol">≋</span><span>04</span></div><h3 data-i18n="cap4">Long-form & custom voices</h3><p data-i18n="cap4Text">Build longer narrations and livestream content. Fine-tune a premium voice with 30 minutes to 5 hours of authorized recordings.</p><span class="cap-tag">LONG CONTEXT · LoRA</span></article>
+      </div>
+      <div class="control-diagram"><div class="diagram-input"><span class="diagram-icon">◉</span><div><small data-i18n="diagramInputLabel">START WITH</small><strong data-i18n="diagramInput">One reference voice</strong></div></div><span class="diagram-arrow" aria-hidden="true">→</span><div class="diagram-model"><span class="brand-wave small" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>LiveTTS</div><span class="diagram-arrow" aria-hidden="true">→</span><div class="control-chips"><span data-i18n="chipLanguage">Language</span><span data-i18n="chipDialect">Dialect</span><span data-i18n="chipEmotion">Emotion</span><span data-i18n="chipRate">Speaking rate</span></div></div>
+      <p class="diagram-caption" data-i18n="diagramCaption">Conceptual capability map, not a model architecture diagram. Supported combinations depend on the deployed version.</p>
+    </section>
+
+    <section class="samples-section" id="samples"><div class="container">
+      <div class="section-heading"><div><p class="eyebrow dark"><span></span><span data-i18n="sampleEyebrow">THE LISTENING ROOM</span></p><h2><span data-i18n="samplesTitle1">Don’t just read about it.</span><br><em data-i18n="samplesTitle2">Listen for the difference.</em></h2></div><div class="sample-heading-note"><svg class="icon"><use href="#headphones"/></svg><p data-i18n="headphoneNote">Headphones recommended.<br>One clip plays at a time.</p></div></div>
+      <div class="sample-toolbar"><div id="sample-filters" class="filter-list" role="group" aria-label="Audio categories"></div><button class="stop-button" id="stop-audio" disabled><svg class="icon"><use href="#pause"/></svg><span data-i18n="pauseAll">Pause audio</span></button></div>
+      <div class="sample-status" id="sample-status" role="status"></div>
+      <div id="sample-cards" class="sample-cards"></div>
+      <noscript><p class="notice">Enable JavaScript to browse the audio catalogue. No audio is generated or uploaded by this static page.</p></noscript>
+      <div class="listening-note"><span>↳</span><p data-i18n="listeningNote">Curated demos illustrate individual cases; they are not a randomized evaluation. Check the model version, text, and settings alongside each published sample.</p></div>
+    </div></section>
+
+    <section class="section container" id="evaluation">
+      <div class="section-heading"><div><p class="eyebrow dark"><span></span><span data-i18n="evalEyebrow">EVIDENCE, WITH CONTEXT</span></p><h2><span data-i18n="evalTitle1">Measured in real scenarios.</span><br><em data-i18n="evalTitle2">Reported with the details.</em></h2></div><span class="evaluation-label"><span></span><span data-i18n="internalEval">TEAM-REPORTED · INTERNAL EVALUATION</span></span></div>
+      <p class="evaluation-intro" data-i18n="evalIntro">Selected results from the supplied LiveTTS overview. These are historical, scenario-specific internal studies — not an independent leaderboard or a claim about the latest model versions.</p>
+      <div id="evaluation-tabs" class="evaluation-tabs" role="group" aria-label="Evaluation scenarios"></div>
+      <div class="evaluation-card"><div class="evaluation-summary"><p class="small-label" data-i18n="reportedResults">REPORTED RESULTS</p><h3 id="evaluation-title"></h3><p id="evaluation-metric"></p><div class="headline-scores"><div><strong id="score-ours"></strong><span id="score-model"></span></div><span class="versus">vs</span><div class="baseline-score"><strong id="score-baseline"></strong><span id="score-baseline-model"></span></div></div><p class="evaluation-method" id="evaluation-method"></p><button class="text-button" id="download-results"><svg class="icon"><use href="#download"/></svg><span data-i18n="downloadResults">Download these results · CSV</span></button></div><div class="evaluation-chart"><div class="chart-legend"><span><i></i><span data-i18n="legendOurs">LiveTTS / JoyAI</span></span><span><i></i><span data-i18n="legendBaseline">Comparison model</span></span></div><div id="metric-chart"></div><p class="chart-note" data-i18n="chartNote">Reported dimension scores · common 0–1 visual scale · higher is better</p></div></div>
+      <details class="results-details"><summary><span data-i18n="rawResults">View exact values & interpretation limits</span><span aria-hidden="true">+</span></summary><div class="table-scroll" role="region" tabindex="0" aria-label="Exact evaluation values"><table><caption id="table-caption"></caption><thead><tr><th scope="col" data-i18n="dimension">Dimension</th><th scope="col" id="table-model"></th><th scope="col" id="table-baseline"></th></tr></thead><tbody id="metric-table"></tbody></table></div><p id="evaluation-caveat"></p></details>
+      <div class="methodology-note"><span class="note-mark">i</span><div><strong data-i18n="methodTitle">What this does — and doesn’t — establish</strong><p data-i18n="methodText">Listening preference, intelligibility, and business outcomes measure different things. Do not infer human indistinguishability from call hang-up rates, or compare MOS across incompatible protocols. Full prompts, rater instructions, sample counts, and confidence intervals are needed for stronger conclusions.</p></div></div>
+    </section>
+
+    <section class="resource-section" id="resources"><div class="container resource-inner"><div><p class="eyebrow"><span></span><span data-i18n="resourceEyebrow">FROM RESEARCH TO YOUR NEXT IDEA</span></p><h2 data-i18n="resourceTitle">Give your next idea a voice.</h2><p data-i18n="resourceDescription">Explore the interactive playground, review the model overview, or connect with the team about evaluation and integration.</p><div class="resource-actions"><button class="button button-light" id="resource-demo"><span data-i18n="tryDemo">Interactive playground</span><svg class="icon"><use href="#external"/></svg></button><a class="button button-outline" href="./MODEL_CARD.md"><svg class="icon"><use href="#document"/></svg><span data-i18n="modelOverview">Model overview</span></a><a class="button button-outline" id="contact-link" hidden><span data-i18n="contact">Contact the team</span><svg class="icon"><use href="#arrow"/></svg></a></div></div><div class="resource-art" aria-hidden="true"><div class="art-ring"></div><div class="art-ring"></div><div class="art-ring"></div><span>Lt<span>↗</span></span></div></div></section>
+    <section class="responsible container"><p class="small-label" data-i18n="responsibleTitle">RESPONSIBLE VOICE GENERATION</p><p data-i18n="responsibleText">Use only voices and recordings you are authorized to use. Disclose synthetic speech when appropriate. Do not impersonate people or mislead listeners. This static showcase does not accept audio uploads, register voices, or expose API credentials.</p></section>
+  </main>
+  <footer class="container footer"><a class="brand" href="#top"><span class="brand-wave small" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>LiveTTS</a><span data-i18n="footer">LiveTTS Development Team · JD · Research showcase</span><a href="#top" class="back-top"><span data-i18n="backTop">Back to top</span> ↑</a></footer>
+  <dialog id="info-dialog" aria-labelledby="dialog-title"><div class="dialog-heading"><span class="small-label">LIVETTS / PROJECT</span><button id="close-dialog" class="icon-button" aria-label="Close dialog"><svg class="icon"><use href="#close"/></svg></button></div><h2 id="dialog-title"></h2><p id="dialog-text"></p><a href="./README.md" class="text-button"><span data-i18n="deploymentGuide">Read the deployment guide</span><svg class="icon"><use href="#arrow"/></svg></a></dialog>
+  <div id="toast" class="toast" role="status" hidden></div>
+</body>
+</html>
