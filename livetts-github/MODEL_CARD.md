@@ -26,7 +26,9 @@ Intelligibility, naturalness, speaker similarity, listener preference, and busin
 
 ## Audio samples
 
-At initial creation, the supplied HTML contained document-linked demos rather than bundled public audio files. The catalogue therefore has explicitly empty audio slots and illustrative transcripts. No other model, system voice, or test tone is used as LiveTTS evidence.
+On November 10, 2026, the 13 output samples were synthesized through the team's local LiveTTS HTTP script with requested model version `2.8.1` and one configured voice. The site records the exact input text and requested settings for each clip. The original 7 reference recordings remain unpublished; a synthesis result is never substituted for an original reference. No other model, system voice, or test tone is used as LiveTTS evidence.
+
+All outputs decode as mono 24 kHz PCM16 WAV and pass basic non-silence and sample-clipping checks. Total generated duration is approximately 89.45 seconds. These are technical file checks, not a listening evaluation or a word-for-word transcription check. Emotion and language labels identify the requested controls; Japanese and mixed-language samples use automatic language detection. The actual reference is not available for independent voice-similarity comparison. These new samples are separate from the historical evaluations above.
 
 When adding audio, record the actual model version, synthesis settings, exact transcript, reference recording authorization, and intended publication rights. For comparisons, use the same text and a documented protocol. Do not remove weaker examples solely to imply a randomized benchmark.
 

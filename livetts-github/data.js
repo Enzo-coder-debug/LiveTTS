@@ -14,8 +14,8 @@ window.LIVETTS_DATA = {
       tags: ["ZERO-SHOT", "ZH / EN"],
       reference: { src: "", transcript: "", label: { en: "Reference voice", zh: "参考音色" } },
       outputs: [
-        { label: { en: "Mandarin · Everyday moments", zh: "普通话 · 日常片刻" }, language: "zh-CN", text: "今天的风刚刚好。忙完手头的事，就去楼下走走吧，给自己留一点慢下来的时间。", src: "", model: "", settings: "", illustrative: true },
-        { label: { en: "English · A little wonder", zh: "英语 · 一点小小的惊喜" }, language: "en", text: "Some ideas are better heard than read. A quiet story, a familiar greeting, a thought that makes you smile.", src: "", model: "", settings: "", illustrative: true },
+        { label: { en: "Mandarin · Everyday moments", zh: "普通话 · 日常片刻" }, language: "zh-CN", text: "今天的风刚刚好。忙完手头的事，就去楼下走走吧，给自己留一点慢下来的时间。", src: "./assets/audio/one-voice-zh.wav", model: "LiveTTS 2.8.1 (requested)", settings: "Configured voice A · emotion=中立 · lang=zh · speed=1.0 · volume=4.0 · PCM16 / 24 kHz / mono · 2026-11-10", illustrative: false },
+        { label: { en: "English · A little wonder", zh: "英语 · 一点小小的惊喜" }, language: "en", text: "Some ideas are better heard than read. A quiet story, a familiar greeting, a thought that makes you smile.", src: "./assets/audio/one-voice-en.wav", model: "LiveTTS 2.8.1 (requested)", settings: "Configured voice A · emotion=中立 · lang=en · speed=1.0 · volume=4.0 · PCM16 / 24 kHz / mono · 2026-11-10", illustrative: false },
       ],
     },
     {
@@ -24,9 +24,9 @@ window.LIVETTS_DATA = {
       tags: ["INSTRUCTION", "EMOTION"],
       reference: { src: "", transcript: "", label: { en: "Shared voice reference", zh: "共同参考音色" } },
       outputs: [
-        { label: { en: "Warm", zh: "温暖" }, language: "zh-CN", text: "你终于来了。我一直在这里，等你一起出发。", src: "", model: "", settings: "", illustrative: true },
-        { label: { en: "Excited", zh: "高兴" }, language: "zh-CN", text: "你终于来了。我一直在这里，等你一起出发。", src: "", model: "", settings: "", illustrative: true },
-        { label: { en: "Sad", zh: "悲伤" }, language: "zh-CN", text: "你终于来了。我一直在这里，等你一起出发。", src: "", model: "", settings: "", illustrative: true },
+        { label: { en: "Warm", zh: "温暖" }, language: "zh-CN", text: "你终于来了。我一直在这里，等你一起出发。", src: "./assets/audio/emotion-warm.wav", model: "LiveTTS 2.8.1 (requested)", settings: "Configured voice A · emotion=温暖 · lang=zh · speed=1.0 · volume=4.0 · PCM16 / 24 kHz / mono · 2026-11-10", illustrative: false },
+        { label: { en: "Excited", zh: "高兴" }, language: "zh-CN", text: "你终于来了。我一直在这里，等你一起出发。", src: "./assets/audio/emotion-excited.wav", model: "LiveTTS 2.8.1 (requested)", settings: "Configured voice A · emotion=高兴 · lang=zh · speed=1.0 · volume=4.0 · PCM16 / 24 kHz / mono · 2026-11-10", illustrative: false },
+        { label: { en: "Sad", zh: "悲伤" }, language: "zh-CN", text: "你终于来了。我一直在这里，等你一起出发。", src: "./assets/audio/emotion-sad.wav", model: "LiveTTS 2.8.1 (requested)", settings: "Configured voice A · emotion=悲伤 · lang=zh · speed=1.0 · volume=4.0 · PCM16 / 24 kHz / mono · 2026-11-10", illustrative: false },
       ],
     },
     {
@@ -35,7 +35,7 @@ window.LIVETTS_DATA = {
       tags: ["AUDIO TAGS", "ZH"],
       reference: { src: "", transcript: "", label: { en: "Voice reference", zh: "参考音色" } },
       outputs: [
-        { label: { en: "Laughter & sigh", zh: "大笑与叹气" }, language: "zh-CN", text: "他听完愣了一下，<laughter>然后摇了摇头<sigh>。", src: "", model: "", settings: "", illustrative: true },
+        { label: { en: "Laughter & sigh", zh: "大笑与叹气" }, language: "zh-CN", text: "他听完愣了一下，<laughter>然后摇了摇头<sigh>。", src: "./assets/audio/audio-tags-output.wav", model: "LiveTTS 2.8.1 (requested)", settings: "Configured voice A · emotion=中立 · lang=zh · speed=1.0 · volume=4.0 · PCM16 / 24 kHz / mono · 2026-11-10", illustrative: false },
       ],
     },
     {
@@ -44,9 +44,9 @@ window.LIVETTS_DATA = {
       tags: ["CROSS-LINGUAL", "VOICE IDENTITY"],
       reference: { src: "", transcript: "", label: { en: "Shared voice reference", zh: "共同参考音色" } },
       outputs: [
-        { label: { en: "English", zh: "英语" }, language: "en", text: "Every new day is a chance to discover something beautiful. Let's take the first step together.", src: "", model: "", settings: "", illustrative: true },
-        { label: { en: "Japanese", zh: "日语" }, language: "ja", text: "新しい一日が始まります。今日は、どんな素敵なことに出会えるでしょう。", src: "", model: "", settings: "", illustrative: true },
-        { label: { en: "Chinese + English", zh: "中英混合" }, language: "zh-CN", text: "Welcome to a brand new day. 今天，也给自己一个小小的期待。Let’s make it a good one.", src: "", model: "", settings: "", illustrative: true },
+        { label: { en: "English", zh: "英语" }, language: "en", text: "Every new day is a chance to discover something beautiful. Let's take the first step together.", src: "./assets/audio/language-en.wav", model: "LiveTTS 2.8.1 (requested)", settings: "Configured voice A · emotion=中立 · lang=en · speed=1.0 · volume=4.0 · PCM16 / 24 kHz / mono · 2026-11-10", illustrative: false },
+        { label: { en: "Japanese", zh: "日语" }, language: "ja", text: "新しい一日が始まります。今日は、どんな素敵なことに出会えるでしょう。", src: "./assets/audio/language-ja.wav", model: "LiveTTS 2.8.1 (requested)", settings: "Configured voice A · emotion=中立 · lang=auto (not specified) · speed=1.0 · volume=4.0 · PCM16 / 24 kHz / mono · 2026-11-10", illustrative: false },
+        { label: { en: "Chinese + English", zh: "中英混合" }, language: "zh-CN", text: "Welcome to a brand new day. 今天，也给自己一个小小的期待。Let’s make it a good one.", src: "./assets/audio/language-mixed.wav", model: "LiveTTS 2.8.1 (requested)", settings: "Configured voice A · emotion=中立 · lang=auto (not specified) · speed=1.0 · volume=4.0 · PCM16 / 24 kHz / mono · 2026-11-10", illustrative: false },
       ],
     },
     {
@@ -55,8 +55,8 @@ window.LIVETTS_DATA = {
       tags: ["DIALECT CONTROL", "ZH"],
       reference: { src: "", transcript: "", label: { en: "Shared voice reference", zh: "共同参考音色" } },
       outputs: [
-        { label: { en: "Sichuan dialect", zh: "四川话" }, language: "zh-CN", text: "今天的太阳好安逸哦，走嘛，出去喝碗茶，摆一会儿龙门阵。", src: "", model: "", settings: "", illustrative: true },
-        { label: { en: "Cantonese", zh: "粤语" }, language: "zh-HK", text: "今天天氣咁好，不如出去行吓，飲杯茶，慢慢傾。", src: "", model: "", settings: "", illustrative: true },
+        { label: { en: "Sichuan dialect", zh: "四川话" }, language: "zh-CN", text: "今天的太阳好安逸哦，走嘛，出去喝碗茶，摆一会儿龙门阵。", src: "./assets/audio/dialect-sichuan.wav", model: "LiveTTS 2.8.1 (requested)", settings: "Configured voice A · emotion=中立 · lang=sichuan · speed=1.0 · volume=4.0 · PCM16 / 24 kHz / mono · 2026-11-10", illustrative: false },
+        { label: { en: "Cantonese", zh: "粤语" }, language: "zh-HK", text: "今天天氣咁好，不如出去行吓，飲杯茶，慢慢傾。", src: "./assets/audio/dialect-cantonese.wav", model: "LiveTTS 2.8.1 (requested)", settings: "Configured voice A · emotion=中立 · lang=yue · speed=1.0 · volume=4.0 · PCM16 / 24 kHz / mono · 2026-11-10", illustrative: false },
       ],
     },
     {
@@ -65,7 +65,7 @@ window.LIVETTS_DATA = {
       tags: ["LONG CONTEXT", "NARRATION"],
       reference: { src: "", transcript: "", label: { en: "Narrator reference", zh: "旁白参考音色" } },
       outputs: [
-        { label: { en: "Storytelling · Full sample", zh: "故事旁白 · 完整样例" }, language: "zh-CN", text: "街角的书店总比别处晚一点熄灯。林夏推开门的时候，雨刚刚停下，空气里混着纸张和泥土的气味。店主从书后抬起头，指了指窗边的座位。\n\n“你找的那本书，今天刚到。”他说。\n\n林夏愣住了。她从来没有告诉过任何人，自己在找一本什么样的书。她走到桌边，翻开封面。第一页只写着一句话：有些故事，要等到你准备好了，才会开始。", src: "", model: "", settings: "", illustrative: true },
+        { label: { en: "Storytelling · Full sample", zh: "故事旁白 · 完整样例" }, language: "zh-CN", text: "街角的书店总比别处晚一点熄灯。林夏推开门的时候，雨刚刚停下，空气里混着纸张和泥土的气味。店主从书后抬起头，指了指窗边的座位。\n\n“你找的那本书，今天刚到。”他说。\n\n林夏愣住了。她从来没有告诉过任何人，自己在找一本什么样的书。她走到桌边，翻开封面。第一页只写着一句话：有些故事，要等到你准备好了，才会开始。", src: "./assets/audio/long-story-output.wav", model: "LiveTTS 2.8.1 (requested)", settings: "Configured voice A · emotion=中立 · lang=zh · speed=1.0 · volume=4.0 · PCM16 / 24 kHz / mono · 2026-11-10", illustrative: false },
       ],
     },
     {
@@ -74,7 +74,7 @@ window.LIVETTS_DATA = {
       tags: ["PHONETICS", "EDUCATION"],
       reference: { src: "", transcript: "", label: { en: "Teaching voice", zh: "教学音色" } },
       outputs: [
-        { label: { en: "Initial, final, syllable", zh: "声母、韵母、整体拼读" }, language: "zh-CN", text: "zh，ōng，zhōng。中，中国的中。", src: "", model: "", settings: "", illustrative: true },
+        { label: { en: "Initial, final, syllable", zh: "声母、韵母、整体拼读" }, language: "zh-CN", text: "zh，ōng，zhōng。中，中国的中。", src: "./assets/audio/phonetics-output.wav", model: "LiveTTS 2.8.1 (requested)", settings: "Configured voice A · emotion=中立 · lang=zh · speed=1.0 · volume=4.0 · PCM16 / 24 kHz / mono · 2026-11-10", illustrative: false },
       ],
     },
   ],
