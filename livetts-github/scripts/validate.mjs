@@ -129,7 +129,7 @@ for (const [, attribute, target] of html.matchAll(/\b(href|src)="([^"]+)"/g)) {
   if (target.startsWith("#")) {
     check(ids.includes(target.slice(1)), `Missing anchor target ${target}`);
   } else if (target.startsWith("./")) {
-    check(fs.existsSync(path.join(root, target)), `Missing static resource ${target}`);
+    check(fs.existsSync(path.join(root, target.split(/[?#]/)[0])), `Missing static resource ${target}`);
   } else {
     check(false, `Use relative static paths: ${attribute}=${target}`);
   }

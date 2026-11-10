@@ -8,7 +8,7 @@ LiveTTS is a generative text-to-speech model developed by the LiveTTS team at JD
 - Accent-enhanced inference and speaker-identity inference modes.
 - Custom voice fine-tuning using approximately 30 minutes to 5 hours of authorized recordings.
 - Emotion/style instruction, including happiness, sadness, anger, fear, surprise, warmth, anticipation, and urgency.
-- Paralinguistic text tags such as `<laughter>`, `<sigh>`, `<cough>`, and `<throat>`.
+- Paralinguistic text tags such as `<laughter>`, `<sigh>`, and `<throat>`.
 - Multiple languages and Chinese dialects, independently controlled from the reference voice where supported by the deployed version.
 - Long-form narration, livestream content, phonetic spelling, singing voice conversion, and humming capabilities described in the source material.
 
@@ -26,13 +26,13 @@ Intelligibility, naturalness, speaker similarity, listener preference, and busin
 
 ## Audio samples
 
-On November 10, 2026, 39 output samples were synthesized through the team's local LiveTTS HTTP script with requested model version `2.8.1` and one configured voice. The site records the exact input text and requested settings for each clip. Original reference recordings for the 8 cases remain unpublished; a synthesis result is never substituted for an original reference. No other model, system voice, or test tone is used as LiveTTS evidence.
+The November 10, 2026 showcase revision contains 36 examples generated through the team's HTTPS script with requested model version 2.8.1 and the user-selected preset timbre. Publication of this revision was approved by the user on November 10, 2026. The old cloned-voice fid was removed. These are preset-voice examples, not zero-shot cloning comparisons. Only the timbre selector and version supported by this HTTP script were sent; no unverified WebSocket model/speaker mapping is asserted.
 
-All outputs decode as mono 24 kHz PCM16 WAV and pass basic non-silence and sample-clipping checks. Total generated duration is approximately 291.33 seconds. These are technical file checks, not a listening evaluation or a word-for-word transcription check. Emotion and language labels identify the requested controls; languages other than English and Mandarin use automatic language detection, as does mixed-language text. The actual reference is not available for independent voice-similarity comparison. These new samples are separate from the historical evaluations above.
+Six emotions remain in their original order: warm, happy, sad, neutral, angry and fearful. Each uses a distinct appropriate script, so this is not a controlled same-text study. All foreign languages now have explicit language tags; Chinese–English mixed text uses lang=zh. Korean and Arabic returned nonempty audio on this run. The cough example was removed after the user reported that the tag had no audible effect. The du se spelling draft concatenates a separately synthesized Chinese introduction with <speak><phoneme alphabet="sym" ph="d u du s e se">d u du s e se</phoneme></speak>, separated by 120 ms of silence. It is a two-request composition, not a successful single mixed-text SSML request or verified syllable pronunciation.
 
-Of 41 attempted outputs including the original 13, Korean and Arabic returned empty audio. Their inputs remain in the catalogue but they are excluded from the gallery and playable counts. All 39 successful outputs are retained, without selection based on listening quality. Empty returns do not establish that these languages are unsupported in every model version or API configuration.
+The 36 outputs total approximately 294.48 seconds, in mono 24 kHz PCM16 WAV. Complete-stream, decoding, non-silence and sample-clipping checks are technical checks, not word-level, emotion, voice-identity or audio-tag listening validation. The user removed one ineffective cough sample; the revised spelling draft awaits listening review. The other 35 outputs are unchanged from the preset-voice synthesis run. New versioned audio paths separate this draft from the previously published voice files.
 
-When adding audio, record the actual model version, synthesis settings, exact transcript, reference recording authorization, and intended publication rights. For comparisons, use the same text and a documented protocol. Do not remove weaker examples solely to imply a randomized benchmark.
+Input text and actual request settings are recorded for each sample. Credentials and internal request logs are not published. Team listening review and media authorization remain required. These examples are separate from the historical evaluation datasets above.
 
 ## Intended use and limitations
 

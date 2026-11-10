@@ -1,54 +1,56 @@
 # 合成文件校验记录
 
-生成日期：2026-11-10。39 条真实 API 合成结果，共约 291.33 秒。本表不包含内部音色 ID、请求 ID 或凭证。
+生成日期：2026-11-10。本轮展示保留 36 条输出，共约 294.48 秒，于 2026-11-10 经用户确认发布。请求版本 2.8.1，使用用户指定的预置音色。旧克隆 fid 已从请求中移除，未沿用旧音色音频。除下述拼读组合稿外，每条均为独立 LiveTTS HTTPS 请求的输出。公开记录不含凭证、请求 ID 或内部音色配置。
 
 | 文件 | 时长（秒） | SHA-256 |
 | --- | ---: | --- |
-| [one-voice-zh.wav](one-voice-zh.wav) | 7.119 | `c36eb5fd34974d5f694c076026a505cd27d96890b76b1d624e8ec2abc2184e3d` |
-| [one-voice-en.wav](one-voice-en.wav) | 7.861 | `b31e53cd17f0d0c0a1ad42903e963b01cec5065eacc9a32fbeec609a9b9f30c8` |
-| [emotion-warm.wav](emotion-warm.wav) | 3.805 | `fe6ab57797f98dc659c4eb34681b40b5b22f2d7a1f652728fbabe1b6b51aab42` |
-| [emotion-excited.wav](emotion-excited.wav) | 4.060 | `8d02a735d26cf05ce12e677ab7ed584a473910f591051fc09ecf2adbfeb53ea6` |
-| [emotion-sad.wav](emotion-sad.wav) | 4.572 | `51ce0ccf92763ca9cbd2cf4b3d76d7e483e40f2a38fcc82228895d613cb6c5a8` |
-| [emotion-neutral.wav](emotion-neutral.wav) | 3.713 | `2b45ba8a65f0392736e5f822d3f22429351d4bc755a339b4e95c138bbe388ead` |
-| [emotion-angry.wav](emotion-angry.wav) | 3.505 | `d08d582537a02e76c28e412ca6135ac48e7eb99163905a7671035d806695c4bf` |
-| [emotion-fearful.wav](emotion-fearful.wav) | 4.024 | `e6c44fca311fc6935c1490c7fca0227d560437c6ccbb1e82c629cc2465350e8a` |
-| [emotion-surprised.wav](emotion-surprised.wav) | 3.889 | `5433cd71f26fc8d592cf2f60eb1dc15f9d21bc4b65fed839facece5bed0e3586` |
-| [emotion-worried.wav](emotion-worried.wav) | 3.631 | `bfb18e77e1b3788f1a4eb41eba797e86df236aa86c705104a9e688b5d163bf93` |
-| [emotion-expectant.wav](emotion-expectant.wav) | 3.652 | `1571ab009a4fb6f165242e958f3a1d4d7982635711782192dfc9a43256b004fb` |
-| [emotion-urgent.wav](emotion-urgent.wav) | 3.673 | `0e08af102311e40bbe29207d4fd5bee6ba083114fd6d669f894eb1861a776c40` |
-| [audio-tags-output.wav](audio-tags-output.wav) | 3.773 | `6795015187231832e8c1d4686b9c8cdbcafaeea6870a56e556969aaa2e926e52` |
-| [tag-laughter.wav](tag-laughter.wav) | 4.688 | `5f39ba54e394d7c3dc9f8019f17e28d5636eec30e1e4363aae20eaeef8f1a5b9` |
-| [tag-sigh.wav](tag-sigh.wav) | 5.767 | `c9fc8e84ddc829080fa8acbae5960cf8553e8cf819a7770318c9d15c7404a55b` |
-| [tag-cough.wav](tag-cough.wav) | 4.849 | `ba1383828125e0c4b13ef045bc7a932f30b43477e8aae536cb045f89f99efd92` |
-| [tag-throat.wav](tag-throat.wav) | 5.065 | `007a98e39e10ff69ea75978467474dbe8ebdc711e0c9f88f1a249fa5263152ec` |
-| [language-en.wav](language-en.wav) | 4.991 | `3359051d60f014e900939b19bac86ff2ce15796722180579d1893ee4f7b3fd5f` |
-| [language-ja.wav](language-ja.wav) | 3.188 | `b34873ab1d3ce99b219fc61c597e685b535ffe4f81695516f545b5338980e3ad` |
-| [language-mixed.wav](language-mixed.wav) | 6.343 | `6acd7e6a2f7484151052bb384961826c34463c47e96235988af606b8506f9b60` |
-| [language-de.wav](language-de.wav) | 7.137 | `5c69817cc3697b0ae9a8aaeedaf041a783550c95294c5a911312ced7115468e4` |
-| [language-fr.wav](language-fr.wav) | 5.848 | `60562311009ee4b1496cad3ca17910ac07745eaa76e879ef02dd835d60d973b9` |
-| [language-es.wav](language-es.wav) | 6.499 | `81f83951d90141127a82944d54683e4b1d8d95693753926cb8f4bfce8044134b` |
-| [language-nl.wav](language-nl.wav) | 6.663 | `b9cf957e5c255348ddb0e06c2730ffc990b8100853b007f7fb527f16422c447c` |
-| [language-id.wav](language-id.wav) | 8.117 | `77b6f62e33815affec9335d69b396706e3bf525b430b857d97e6439d677c19c6` |
-| [dialect-sichuan.wav](dialect-sichuan.wav) | 5.065 | `bcc1262f6681a6da30abf0fc514587e7f5f823c766649afd4604c45070f35e8a` |
-| [dialect-cantonese.wav](dialect-cantonese.wav) | 4.825 | `e4f6d279e8f7125b92737aad189c08391694b3f00f7d4e89207e011265004b33` |
-| [dialect-dongbei.wav](dialect-dongbei.wav) | 4.887 | `3bcfbe693625d116bf160eb833fe6b13167717897eb962bd19ad6f9bd337b10b` |
-| [dialect-henan.wav](dialect-henan.wav) | 5.252 | `a7daced62e648d977db1df5628404797f6a68bfce11e1b359f53de10a695ae48` |
-| [dialect-tianjin.wav](dialect-tianjin.wav) | 6.021 | `e976bf467d2d2887acf886d553d1170532e9c46c8ed3b5f6a6bce18e79740576` |
-| [dialect-shaanxi.wav](dialect-shaanxi.wav) | 5.039 | `1c2b618019b82228a5491410d9d15a7eae1b8cbc8b9efe177befe6a0c5a72aa1` |
-| [dialect-shanghai.wav](dialect-shanghai.wav) | 4.729 | `93e4d538de95a02751528b16706aa1b216ae3f434580f126558f395daf551e27` |
-| [dialect-min.wav](dialect-min.wav) | 5.160 | `6ce31bd84c9d24e29e51c922dd5c9716203d4ddd6450a1942e41bc603ec94e01` |
-| [long-story-output.wav](long-story-output.wav) | 28.725 | `2e67a746e9b6f93e547a73177f9be4c666f0eea6caf06fd82b217bd453653bcc` |
-| [long-podcast.wav](long-podcast.wav) | 54.271 | `86beb9dbe16f431fbb65c95a7dfe1fb4c9989c10f55d692de3e3288bfb16a332` |
-| [phonetics-output.wav](phonetics-output.wav) | 5.124 | `3e070e98b1d8ed79e068f6245637998690a07c62901a6dcd9f3b5e739120f4f0` |
-| [scene-service.wav](scene-service.wav) | 10.239 | `5474706090d8fa63b69220fa41545d5ac92a6d7b8e981df011e54b427ac6ea1b` |
-| [scene-live.wav](scene-live.wav) | 11.671 | `63c861208852ead57c9918b74a5cdea379e18985893c1dc42ad5d37b9cb42f34` |
-| [scene-museum.wav](scene-museum.wav) | 13.891 | `2a1a4e5b313370b17cb27b88db40e8ff3a57e66d6e98e71eac59bb0d68f56b61` |
+| [one-voice-zh.wav](peach-20261110/one-voice-zh.wav) | 6.441 | `bf84eafec01d979039f0e5d39f7f42e0e8c033db0c29cccf98e0f980d2ba0bd4` |
+| [one-voice-en.wav](peach-20261110/one-voice-en.wav) | 7.005 | `d3c37ebe1ce65157533c02682be52a7cedb4c2fd0cd21730282ac122f5f17f75` |
+| [emotion-warm.wav](peach-20261110/emotion-warm.wav) | 8.262 | `e8513aedd0f3afabbac293fed1e2c4123ceb579686d67eb44270a0543b7a7eae` |
+| [emotion-excited.wav](peach-20261110/emotion-excited.wav) | 8.063 | `5cecfeb569d986183af662e93e24ef8e66518fc6695b7208315be8d63c127448` |
+| [emotion-sad.wav](peach-20261110/emotion-sad.wav) | 10.331 | `2cc3aef6bd59b838c8c58589c54de8f9501da9d4399ab116ea19db64ab5e9608` |
+| [emotion-neutral.wav](peach-20261110/emotion-neutral.wav) | 7.183 | `8cb66ac8658a117f11b256450ca6e71640a6e115c3c6564a07a5c2f08dbc22d1` |
+| [emotion-angry.wav](peach-20261110/emotion-angry.wav) | 9.095 | `f2869cfebf9c45f9bfc5be26b793a44c0327ee69617e7cef2a317c7a47698d4b` |
+| [emotion-fearful.wav](peach-20261110/emotion-fearful.wav) | 8.774 | `b1475083411c437f0ec9cc0b75f4a46b691fec453a348c9081f1facdfea07cb9` |
+| [audio-tags-output.wav](peach-20261110/audio-tags-output.wav) | 2.847 | `be3405c1243fc5f64189e6d474dcc83efcd3a1f084481216ab4d1d6a9df4c8de` |
+| [tag-laughter.wav](peach-20261110/tag-laughter.wav) | 4.559 | `939def97a2b7e6e670503d5cdf8a21d6be13e9917fc5d043335612ac4ec0b488` |
+| [tag-sigh.wav](peach-20261110/tag-sigh.wav) | 5.073 | `fc4d5358de416387c805d44c59d6811a3ecea8f22b2de372c47d78696266a378` |
+| [tag-throat.wav](peach-20261110/tag-throat.wav) | 4.307 | `65099d486a1848a18c696744943b42e202f10bf2df4b6354ebf4202bd959212b` |
+| [language-en.wav](peach-20261110/language-en.wav) | 5.305 | `0806f427158616354fac22a8e8972141cb1fde54bc1aa24c12b26c028e3be5d7` |
+| [language-ja.wav](peach-20261110/language-ja.wav) | 6.812 | `a90a9a927c646bf01edb8acf6fd3f1ee98d5508bd5a519e72d89737b80ae85b7` |
+| [language-mixed.wav](peach-20261110/language-mixed.wav) | 6.542 | `37bf00d394b0881ec712173706caae341b3a65aac9bb42afcf4fde54d5fda4c2` |
+| [language-de.wav](peach-20261110/language-de.wav) | 6.175 | `eeedb647e22b07a4063b6328545773a9ceb94acc3df13ecfe0a3798640f26c26` |
+| [language-fr.wav](peach-20261110/language-fr.wav) | 6.405 | `bb296a1585d20a661eb1898609b723b89141e5266ffd07588887be131a7e693a` |
+| [language-es.wav](peach-20261110/language-es.wav) | 6.519 | `3dee4133012753c258e87e2e73cc7a1a33ef4d15494071665caa90e853b3de85` |
+| [language-nl.wav](peach-20261110/language-nl.wav) | 5.326 | `5f29e71d818352c07309d6038cdad1ebace161b446db5ee61cb945d49894f9bc` |
+| [language-ko.wav](peach-20261110/language-ko.wav) | 5.903 | `2607ed1644c63858a2a077627fcf714ee826a87e8428099b1b216e01b6794408` |
+| [language-ar.wav](peach-20261110/language-ar.wav) | 5.142 | `e6168d31f88ce94ffb7935f323b7230548810341b8d030a645b0c56b7dfab1eb` |
+| [language-id.wav](peach-20261110/language-id.wav) | 8.499 | `0e4e2725bb778147afd827ebd86cda5d711833ce7b6878211b5ba6e2373bb4cc` |
+| [dialect-sichuan.wav](peach-20261110/dialect-sichuan.wav) | 4.723 | `744d4f11356ef4e8e0ccecc9c5be895d807ffd8824e17fb91dd9421e559572c6` |
+| [dialect-cantonese.wav](peach-20261110/dialect-cantonese.wav) | 4.273 | `7221750963c881d82d07675c05145235211bf3c2fb8a493cc95de2a76b2f1481` |
+| [dialect-dongbei.wav](peach-20261110/dialect-dongbei.wav) | 4.110 | `5405ac97eee0d51a527fb01015d232efbf236d179a2c282138b50e2ad41c8e00` |
+| [dialect-henan.wav](peach-20261110/dialect-henan.wav) | 4.227 | `372cb2bb5dfb0ccffc614114954e9c525f25291adc679df41123b745eef4dcd7` |
+| [dialect-tianjin.wav](peach-20261110/dialect-tianjin.wav) | 5.027 | `8e5cc4ac59d6f22f57404c58bfc886889a5600d0569084c6507bd826bb4b264b` |
+| [dialect-shaanxi.wav](peach-20261110/dialect-shaanxi.wav) | 4.419 | `3b0e55bba491a1e34243a808e0a8488f30cb19021d8d95adfa3c2b00ae835f34` |
+| [dialect-shanghai.wav](peach-20261110/dialect-shanghai.wav) | 4.369 | `60437087ed1f03914622e0376d944fcd57d09b80d501dbc975b08ab71a414481` |
+| [dialect-min.wav](peach-20261110/dialect-min.wav) | 4.910 | `b7415cec4f6e9d787793153021119a7d195122d82d133cb93e248258beab2cfc` |
+| [long-story-output.wav](peach-20261110/long-story-output.wav) | 27.186 | `c6cdcda41192b4f85448d5eb9ae4366435a82d8645a9705eaff2315a50a6683b` |
+| [long-podcast.wav](peach-20261110/long-podcast.wav) | 49.290 | `c9d572e3f50b6270cdf23021baf4df489f8903f4039abf89b32c0883d6e5c84c` |
+| [phonetics-output.wav](peach-20261110/phonetics-output.wav) | 3.559 | `d20dd9c825a4e3909bb47291e07078aaf3c79078fc84f2a02dcade48e50bfafc` |
+| [scene-service.wav](peach-20261110/scene-service.wav) | 9.267 | `3b30d76504cddc57717afd97b04c8c43226b0829beaf0ad83446ea6e55c2e343` |
+| [scene-live.wav](peach-20261110/scene-live.wav) | 11.513 | `c6e8e45cfd0a14016bb9074d7a55f034d471514eae6b21ff6b42e0f2c751a1ac` |
+| [scene-museum.wav](peach-20261110/scene-museum.wav) | 13.038 | `98ee5c2a62484bdabbcf35d095c233316725f72021f91b302b8ee34618ef5f31` |
 
-文件均为 24 kHz 单声道 PCM16 WAV，均通过完整性与非静音检查，采样削波比例为 0。保留 API 返回的完整音频，未做剪辑、降噪、拼接或响度归一化。
+## 本轮变更
 
-本轮共尝试 41 个输出（含已有的 13 条）。韩语与阿拉伯语请求返回空音频，因此未进入试听区和音频数量统计；不使用占位音冒充模型输出。两条输入仍留在 data.js 中，便于后续补充，详见各自的空 src。其他 39 条成功结果全部保留，不按听感挑选。
+- 情绪仅保留温暖、高兴、悲伤、中立、愤怒、恐惧，分别使用不同文案；不再作为固定文本情感对照。
+- 外语使用附件提供的明确 lang 标签：en、ja、de、fr、es、nl、ko、ar、id。中英混合明确请求 lang=zh；这不是附件提供的逐段语言切换规则，混读效果仍待人工确认。
+- 用户听审认为咳嗽未生效，已删除该音频并移除页面条目。
+- 拼读目标按用户最新要求改为“堵塞的拼音是 d u du s e se”。完整中文引导语与 phoneme 混排的请求返回 SSML 解析错误；纯 `ph="du se"` 请求未返回音频。这是本次接口观察，不是通用 SSML 规则。
+- 当前拼读稿由两个成功请求的输出组合：`堵塞的拼音是，`（1.353 秒）以及 `<speak><phoneme alphabet="sym" ph="d u du s e se">d u du s e se</phoneme></speak>`（2.086 秒），中间加入 120 ms 静音。不是整词 du/se 或声调正确性的认证，需人工试听确认。
+- 本轮韩语、阿拉伯语已成功返回非空音频并纳入展示；此前空返回不沿用为本轮结论。
 
-英语请求 lang=en；日语、德语、法语、西班牙语、荷兰语、印尼语、中英混合及上述两个失败请求均未显式指定 lang。自动语言判断的返回文件并不保证对应语言发音正确。
+所有文件均为 24 kHz 单声道 PCM16 WAV，原始请求均完整分片结束，输出非静音、采样削波比例为 0。除拼读稿按上述方式拼接外，其余 35 条的原始 API PCM 仅封装为 WAV，未剪辑、重采样、降噪、拼接或归一化。文件使用新的发布子目录，与上一版音色分开；本地替换后如仍听到旧稿，请重新加载播放器。
 
-本记录只验证文件完整性，不验证文字、发音、方言、情感和副语言标签的听感正确性。原始参考录音尚未公开。
+文件校验不验证逐字发音、音色对应关系、情感或 SSML 标签的实际听感。团队仍需人工听审；本组为指定预置音色示例，不是零样本克隆对照。历史内部评测保持原样，与本轮新音频无关。
 
