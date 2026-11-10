@@ -64,6 +64,13 @@ const data = context.window.LIVETTS_DATA;
 check(config && data && Array.isArray(data.categories) && Array.isArray(data.samples) && Array.isArray(data.evaluations), "Missing site data");
 if (errors.length) { console.error(errors.join("\n")); process.exit(1); }
 check(["en", "zh"].includes(config.defaultLanguage), "Invalid default language");
+if (config.copy !== undefined) {
+  check(config.copy && typeof config.copy === 'object' && !Array.isArray(config.copy), 'Custom site copy must be an object');
+  for (const [language, fields] of Object.entries(config.copy || {})) {
+    check(['zh', 'en'].includes(language) && fields && typeof fields === 'object' && !Array.isArray(fields), 'Invalid custom copy language');
+    for (const value of Object.values(fields || {})) check(typeof value === 'string', 'Custom copy must contain text');
+  }
+}
 for (const key of ["spaceUrl", "repositoryUrl", "technicalReportUrl", "contactUrl"]) {
   check(typeof config[key] === "string", `${key} must be a string`);
   publicUrl(config[key], key, key === "contactUrl");
@@ -93,6 +100,7 @@ for (const sample of data.samples) {
   check(Array.isArray(sample.outputs) && sample.outputs.length > 0, `${sample.id} has no output entries`);
   for (const [index, output] of (sample.outputs || []).entries()) {
     const label = `${sample.id} output ${index + 1}`;
+    check(output.enabled === undefined || typeof output.enabled === 'boolean', `${label} visibility must be boolean`);
     localized(output.label, label);
     check(typeof output.text === "string" && output.text.trim(), `${label} needs a transcript`);
     check(typeof output.language === "string", `${label} needs a language tag`);
@@ -151,12 +159,12 @@ function inspectPublicFile(relative) {
   check(!stat.isSymbolicLink(), `Public file must not be a symlink: ${relative}`);
   if (stat.isSymbolicLink()) return;
   if (stat.isDirectory()) {
-    for (const entry of fs.readdirSync(absolute)) inspectPublicFile(path.join(relative, entry));
+    for (const entry of fs.readdirSync(absolute)) if (entry !== '.DS_Store') inspectPublicFile(path.join(relative, entry));
     return;
   }
   check(!path.basename(relative).startsWith(".") || [".nojekyll", ".gitkeep"].includes(path.basename(relative)), `Unexpected hidden public file: ${relative}`);
-  check(/\.(html|js|css|md|svg|png|jpg|jpeg|webp|wav|mp3|ogg|m4a|flac)$/.test(relative) || relative.endsWith(".nojekyll") || relative.endsWith(".gitkeep"), `Unexpected public file type: ${relative}`);
-  if (/\.(html|js|css|md|svg)$/.test(relative)) {
+  check(/\.(html|js|css|md|json|svg|png|jpg|jpeg|webp|wav|mp3|ogg|m4a|flac)$/.test(relative) || relative.endsWith(".nojekyll") || relative.endsWith(".gitkeep"), `Unexpected public file type: ${relative}`);
+  if (/\.(html|js|css|md|json|svg)$/.test(relative)) {
     const text = fs.readFileSync(absolute, "utf8");
     check(!/(?:sk-[A-Za-z0-9_-]{16,}|hf_[A-Za-z0-9]{16,}|ghp_[A-Za-z0-9]{16,})/.test(text), `Credential-like value found in ${relative}`);
     check(!/https?:\/\/(?:api)?joyspace\.jd\.com/i.test(text), `Internal document URL found in ${relative}`);

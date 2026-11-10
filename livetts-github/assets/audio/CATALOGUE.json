@@ -1,0 +1,293 @@
+{
+  "updated_at": "2026-11-10T12:50:12.498Z",
+  "files": [
+    {
+      "src": "./assets/audio/peach-20261110/one-voice-zh.wav",
+      "sha256": "bf84eafec01d979039f0e5d39f7f42e0e8c033db0c29cccf98e0f980d2ba0bd4",
+      "bytes": 309228,
+      "duration_seconds": 6.441,
+      "sample_rate": 24000,
+      "channels": 1
+    },
+    {
+      "src": "./assets/audio/peach-20261110/one-voice-en.wav",
+      "sha256": "d3c37ebe1ce65157533c02682be52a7cedb4c2fd0cd21730282ac122f5f17f75",
+      "bytes": 336268,
+      "duration_seconds": 7.005,
+      "sample_rate": 24000,
+      "channels": 1
+    },
+    {
+      "src": "./assets/audio/peach-20261110/emotion-warm.wav",
+      "sha256": "e8513aedd0f3afabbac293fed1e2c4123ceb579686d67eb44270a0543b7a7eae",
+      "bytes": 396620,
+      "duration_seconds": 8.262,
+      "sample_rate": 24000,
+      "channels": 1
+    },
+    {
+      "src": "./assets/audio/peach-20261110/emotion-excited.wav",
+      "sha256": "5cecfeb569d986183af662e93e24ef8e66518fc6695b7208315be8d63c127448",
+      "bytes": 387084,
+      "duration_seconds": 8.063,
+      "sample_rate": 24000,
+      "channels": 1
+    },
+    {
+      "src": "./assets/audio/peach-20261110/emotion-sad.wav",
+      "sha256": "2cc3aef6bd59b838c8c58589c54de8f9501da9d4399ab116ea19db64ab5e9608",
+      "bytes": 495948,
+      "duration_seconds": 10.331,
+      "sample_rate": 24000,
+      "channels": 1
+    },
+    {
+      "src": "./assets/audio/peach-20261110/emotion-neutral.wav",
+      "sha256": "8cb66ac8658a117f11b256450ca6e71640a6e115c3c6564a07a5c2f08dbc22d1",
+      "bytes": 344844,
+      "duration_seconds": 7.183,
+      "sample_rate": 24000,
+      "channels": 1
+    },
+    {
+      "src": "./assets/audio/peach-20261110/emotion-angry.wav",
+      "sha256": "f2869cfebf9c45f9bfc5be26b793a44c0327ee69617e7cef2a317c7a47698d4b",
+      "bytes": 436620,
+      "duration_seconds": 9.095,
+      "sample_rate": 24000,
+      "channels": 1
+    },
+    {
+      "src": "./assets/audio/peach-20261110/emotion-fearful.wav",
+      "sha256": "b1475083411c437f0ec9cc0b75f4a46b691fec453a348c9081f1facdfea07cb9",
+      "bytes": 421196,
+      "duration_seconds": 8.774,
+      "sample_rate": 24000,
+      "channels": 1
+    },
+    {
+      "src": "./assets/audio/peach-20261110/audio-tags-output.wav",
+      "sha256": "be3405c1243fc5f64189e6d474dcc83efcd3a1f084481216ab4d1d6a9df4c8de",
+      "bytes": 136716,
+      "duration_seconds": 2.847,
+      "sample_rate": 24000,
+      "channels": 1
+    },
+    {
+      "src": "./assets/audio/peach-20261110/tag-laughter.wav",
+      "sha256": "939def97a2b7e6e670503d5cdf8a21d6be13e9917fc5d043335612ac4ec0b488",
+      "bytes": 218892,
+      "duration_seconds": 4.559,
+      "sample_rate": 24000,
+      "channels": 1
+    },
+    {
+      "src": "./assets/audio/peach-20261110/tag-sigh.wav",
+      "sha256": "fc4d5358de416387c805d44c59d6811a3ecea8f22b2de372c47d78696266a378",
+      "bytes": 243532,
+      "duration_seconds": 5.073,
+      "sample_rate": 24000,
+      "channels": 1
+    },
+    {
+      "src": "./assets/audio/peach-20261110/tag-throat.wav",
+      "sha256": "65099d486a1848a18c696744943b42e202f10bf2df4b6354ebf4202bd959212b",
+      "bytes": 206796,
+      "duration_seconds": 4.307,
+      "sample_rate": 24000,
+      "channels": 1
+    },
+    {
+      "src": "./assets/audio/peach-20261110/language-en.wav",
+      "sha256": "0806f427158616354fac22a8e8972141cb1fde54bc1aa24c12b26c028e3be5d7",
+      "bytes": 254668,
+      "duration_seconds": 5.305,
+      "sample_rate": 24000,
+      "channels": 1
+    },
+    {
+      "src": "./assets/audio/peach-20261110/language-ja.wav",
+      "sha256": "a90a9a927c646bf01edb8acf6fd3f1ee98d5508bd5a519e72d89737b80ae85b7",
+      "bytes": 327020,
+      "duration_seconds": 6.812,
+      "sample_rate": 24000,
+      "channels": 1
+    },
+    {
+      "src": "./assets/audio/peach-20261110/language-mixed.wav",
+      "sha256": "37bf00d394b0881ec712173706caae341b3a65aac9bb42afcf4fde54d5fda4c2",
+      "bytes": 314060,
+      "duration_seconds": 6.542,
+      "sample_rate": 24000,
+      "channels": 1
+    },
+    {
+      "src": "./assets/audio/peach-20261110/language-de.wav",
+      "sha256": "eeedb647e22b07a4063b6328545773a9ceb94acc3df13ecfe0a3798640f26c26",
+      "bytes": 296460,
+      "duration_seconds": 6.175,
+      "sample_rate": 24000,
+      "channels": 1
+    },
+    {
+      "src": "./assets/audio/peach-20261110/language-fr.wav",
+      "sha256": "bb296a1585d20a661eb1898609b723b89141e5266ffd07588887be131a7e693a",
+      "bytes": 307500,
+      "duration_seconds": 6.405,
+      "sample_rate": 24000,
+      "channels": 1
+    },
+    {
+      "src": "./assets/audio/peach-20261110/language-es.wav",
+      "sha256": "3dee4133012753c258e87e2e73cc7a1a33ef4d15494071665caa90e853b3de85",
+      "bytes": 312940,
+      "duration_seconds": 6.519,
+      "sample_rate": 24000,
+      "channels": 1
+    },
+    {
+      "src": "./assets/audio/peach-20261110/language-nl.wav",
+      "sha256": "5f29e71d818352c07309d6038cdad1ebace161b446db5ee61cb945d49894f9bc",
+      "bytes": 255692,
+      "duration_seconds": 5.326,
+      "sample_rate": 24000,
+      "channels": 1
+    },
+    {
+      "src": "./assets/audio/peach-20261110/language-ko.wav",
+      "sha256": "2607ed1644c63858a2a077627fcf714ee826a87e8428099b1b216e01b6794408",
+      "bytes": 283404,
+      "duration_seconds": 5.903,
+      "sample_rate": 24000,
+      "channels": 1
+    },
+    {
+      "src": "./assets/audio/peach-20261110/language-ar.wav",
+      "sha256": "e6168d31f88ce94ffb7935f323b7230548810341b8d030a645b0c56b7dfab1eb",
+      "bytes": 246860,
+      "duration_seconds": 5.142,
+      "sample_rate": 24000,
+      "channels": 1
+    },
+    {
+      "src": "./assets/audio/peach-20261110/language-id.wav",
+      "sha256": "0e4e2725bb778147afd827ebd86cda5d711833ce7b6878211b5ba6e2373bb4cc",
+      "bytes": 408012,
+      "duration_seconds": 8.499,
+      "sample_rate": 24000,
+      "channels": 1
+    },
+    {
+      "src": "./assets/audio/peach-20261110/dialect-sichuan.wav",
+      "sha256": "744d4f11356ef4e8e0ccecc9c5be895d807ffd8824e17fb91dd9421e559572c6",
+      "bytes": 226764,
+      "duration_seconds": 4.723,
+      "sample_rate": 24000,
+      "channels": 1
+    },
+    {
+      "src": "./assets/audio/peach-20261110/dialect-cantonese.wav",
+      "sha256": "7221750963c881d82d07675c05145235211bf3c2fb8a493cc95de2a76b2f1481",
+      "bytes": 205132,
+      "duration_seconds": 4.273,
+      "sample_rate": 24000,
+      "channels": 1
+    },
+    {
+      "src": "./assets/audio/peach-20261110/dialect-dongbei.wav",
+      "sha256": "5405ac97eee0d51a527fb01015d232efbf236d179a2c282138b50e2ad41c8e00",
+      "bytes": 197324,
+      "duration_seconds": 4.11,
+      "sample_rate": 24000,
+      "channels": 1
+    },
+    {
+      "src": "./assets/audio/peach-20261110/dialect-henan.wav",
+      "sha256": "372cb2bb5dfb0ccffc614114954e9c525f25291adc679df41123b745eef4dcd7",
+      "bytes": 202956,
+      "duration_seconds": 4.227,
+      "sample_rate": 24000,
+      "channels": 1
+    },
+    {
+      "src": "./assets/audio/peach-20261110/dialect-tianjin.wav",
+      "sha256": "8e5cc4ac59d6f22f57404c58bfc886889a5600d0569084c6507bd826bb4b264b",
+      "bytes": 241356,
+      "duration_seconds": 5.027,
+      "sample_rate": 24000,
+      "channels": 1
+    },
+    {
+      "src": "./assets/audio/peach-20261110/dialect-shaanxi.wav",
+      "sha256": "3b0e55bba491a1e34243a808e0a8488f30cb19021d8d95adfa3c2b00ae835f34",
+      "bytes": 212172,
+      "duration_seconds": 4.419,
+      "sample_rate": 24000,
+      "channels": 1
+    },
+    {
+      "src": "./assets/audio/peach-20261110/dialect-shanghai.wav",
+      "sha256": "60437087ed1f03914622e0376d944fcd57d09b80d501dbc975b08ab71a414481",
+      "bytes": 209772,
+      "duration_seconds": 4.369,
+      "sample_rate": 24000,
+      "channels": 1
+    },
+    {
+      "src": "./assets/audio/peach-20261110/dialect-min.wav",
+      "sha256": "b7415cec4f6e9d787793153021119a7d195122d82d133cb93e248258beab2cfc",
+      "bytes": 235724,
+      "duration_seconds": 4.91,
+      "sample_rate": 24000,
+      "channels": 1
+    },
+    {
+      "src": "./assets/audio/peach-20261110/long-story-output.wav",
+      "sha256": "c6cdcda41192b4f85448d5eb9ae4366435a82d8645a9705eaff2315a50a6683b",
+      "bytes": 1304972,
+      "duration_seconds": 27.186,
+      "sample_rate": 24000,
+      "channels": 1
+    },
+    {
+      "src": "./assets/audio/peach-20261110/long-podcast.wav",
+      "sha256": "c9d572e3f50b6270cdf23021baf4df489f8903f4039abf89b32c0883d6e5c84c",
+      "bytes": 2365964,
+      "duration_seconds": 49.29,
+      "sample_rate": 24000,
+      "channels": 1
+    },
+    {
+      "src": "./assets/audio/peach-20261110/phonetics-output.wav",
+      "sha256": "d20dd9c825a4e3909bb47291e07078aaf3c79078fc84f2a02dcade48e50bfafc",
+      "bytes": 170860,
+      "duration_seconds": 3.559,
+      "sample_rate": 24000,
+      "channels": 1
+    },
+    {
+      "src": "./assets/audio/peach-20261110/scene-service.wav",
+      "sha256": "3b30d76504cddc57717afd97b04c8c43226b0829beaf0ad83446ea6e55c2e343",
+      "bytes": 444876,
+      "duration_seconds": 9.267,
+      "sample_rate": 24000,
+      "channels": 1
+    },
+    {
+      "src": "./assets/audio/peach-20261110/scene-live.wav",
+      "sha256": "c6e8e45cfd0a14016bb9074d7a55f034d471514eae6b21ff6b42e0f2c751a1ac",
+      "bytes": 552652,
+      "duration_seconds": 11.513,
+      "sample_rate": 24000,
+      "channels": 1
+    },
+    {
+      "src": "./assets/audio/peach-20261110/scene-museum.wav",
+      "sha256": "98ee5c2a62484bdabbcf35d095c233316725f72021f91b302b8ee34618ef5f31",
+      "bytes": 625868,
+      "duration_seconds": 13.038,
+      "sample_rate": 24000,
+      "channels": 1
+    }
+  ]
+}

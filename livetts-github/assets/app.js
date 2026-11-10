@@ -55,10 +55,10 @@
   let category = 'all';
   let query = '';
   let toastTimer;
-  const text = (key) => copy[language][key];
+  const text = (key) => config.copy?.[language]?.[key]?.trim() || copy[language][key];
   const localized = (value) => value[language];
   const pair = (value) => value[language === 'zh' ? 0 : 1];
-  const playable = (output) => Boolean(output.src && !output.illustrative);
+  const playable = (output) => Boolean(output.src && !output.illustrative && output.enabled !== false);
   function element(tag, className, content) {
     const node = document.createElement(tag);
     if (className) node.className = className;

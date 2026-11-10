@@ -18,6 +18,8 @@ Hugging Face 当前为静态界面预览，不调用 API、不生成语音、不
 
 ## 目录
 
+本地可视化管理：双击 `livetts-github/启动控制台.command`，编辑文案、替换 WAV、调整顺序或隐藏示例，保存预览后发布。需要 Node.js 22+，发布时使用本机已登录的 GitHub CLI。管理后台不对公网开放，详见 [控制台使用说明](livetts-github/README.md)。
+
 ```text
 livetts-github/                 GitHub Pages 展示站
 livetts-space/                  Hugging Face 界面与 Docker 后端

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>LiveTTS · 内容控制台</title>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/console/style.css">
+  <script src="/console/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/console/"><span class="brand-icon">L</span><strong>LiveTTS</strong><span class="brand-divider">/</span><span>内容控制台</span></a>
+    <div class="actions"><span id="save-state" class="state">正在连接…</span><button id="reload">重新加载</button><button id="preview">预览网站 ↗</button><button id="save" class="primary">保存修改</button><button id="publish" class="publish">发布到官网</button></div>
+  </header>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="workspace-label">WORKSPACE</div>
+      <button class="nav-item active" data-view="audio"><span>◉</span> 音频与文案 <span id="nav-count" class="pill">—</span></button>
+      <button class="nav-item" data-view="settings"><span>◈</span> 网站设置</button>
+      <button class="nav-item" data-view="release"><span>↥</span> 发布与备份</button>
+      <div class="sidebar-bottom"><span class="connection"><i></i> 仅本机管理</span><p>修改先保存在电脑上，<br>确认后再发布到 GitHub Pages。</p><a id="public-site" target="_blank" rel="noopener">打开公开网站 ↗</a></div>
+    </aside>
+    <main>
+      <div class="page-heading"><div><div class="eyebrow">LIVETTS STUDIO</div><h1 id="page-title">让每一条示例恰到好处。</h1><p id="page-description">试听、编辑、替换音频。在这里完成，不必修改代码。</p></div><span class="project-badge">Enzo-coder-debug / LiveTTS</span></div>
+      <div id="notice" class="notice" role="status" hidden></div>
+      <section id="audio-view">
+        <div class="stats"><div><span>音频条目</span><strong id="total-count">—</strong></div><div><span>公开展示</span><strong id="visible-count">—</strong></div><div><span>示例分组</span><strong id="group-count">—</strong></div><div class="stat-note"><span>安全的编辑流程</span><p>编辑 → 保存 → 预览 → 发布</p></div></div>
+        <div class="audio-workspace">
+          <section class="catalogue" aria-label="音频目录"><div class="catalogue-head"><h2>音频目录</h2><button id="add-output" class="small">＋ 新增</button></div><label class="search-label"><span class="sr-only">搜索音频</span><input id="search" type="search" placeholder="搜索名称、语种或文本…"></label><div id="audio-list"></div></section>
+          <section id="editor" class="editor" aria-label="音频编辑器"><p>正在加载音频目录…</p></section>
+        </div>
+      </section>
+      <section id="settings-view" class="settings-view" hidden><div id="settings-form"></div></section>
+      <section id="release-view" hidden>
+        <div class="panel"><div class="panel-label">GITHUB PAGES</div><h2>发布到独立公开项目</h2><p>只更新 <strong>Enzo-coder-debug/LiveTTS</strong>。不会修改其他仓库，也不会上传 API 密钥、生成日志或本地备份。</p><dl class="release-facts"><div><dt>最近提交</dt><dd id="release-sha">—</dd></div><div><dt>发布状态</dt><dd id="deployment-state">尚未检查</dd></div></dl><button id="check-deployment">检查部署状态</button><pre id="publish-log" aria-live="polite">尚未发起新的发布。</pre></div>
+        <div class="panel"><div class="panel-label">LOCAL BACKUP</div><h2>每次保存，自动保留上一版</h2><p>恢复操作只影响本地文案和音频引用，不直接改动官网。旧音频文件保留，便于回退。</p><button id="restore" class="danger-outline">恢复上次保存前的内容</button></div>
+        <div class="panel subtle"><h3>两件不同的事</h3><p>“修改文本”只修改展示内容，不会重新合成音频。需要新发音时，请先合成并上传对应的 WAV，再一起保存和发布。</p></div>
+      </section>
+    </main>
+  </div>
+  <dialog id="preview-dialog"><div class="dialog-header"><strong>本地网站预览</strong><span>当前已保存的版本 · 尚未发布的修改不会影响官网</span><button id="close-preview">关闭预览 ×</button></div><iframe id="preview-frame" title="LiveTTS 本地预览"></iframe></dialog>
+</body>
+</html>

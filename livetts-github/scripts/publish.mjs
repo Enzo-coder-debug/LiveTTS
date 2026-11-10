@@ -50,9 +50,9 @@ export async function publicationFiles() {
     }
     if (!stat.isFile() || stat.size > 45 * 1024 * 1024) throw new Error(`无效或过大的文件：${relative}`);
     if (relative.split('/').some(part => part.startsWith('.') && part !== '.nojekyll')) throw new Error(`禁止发布隐藏文件：${relative}`);
-    if (!/\.(html|js|mjs|css|md|svg|png|jpg|jpeg|webp|wav|mp3|ogg|m4a|flac|py|command)$/.test(relative) && relative !== '.nojekyll') throw new Error(`不允许的文件类型：${relative}`);
+    if (!/\.(html|js|mjs|css|md|json|svg|png|jpg|jpeg|webp|wav|mp3|ogg|m4a|flac|py|command)$/.test(relative) && relative !== '.nojekyll') throw new Error(`不允许的文件类型：${relative}`);
     const content = await fs.readFile(absolute);
-    if (/\.(html|js|mjs|css|md|svg|py|command)$/.test(relative)) {
+    if (/\.(html|js|mjs|css|md|json|svg|py|command)$/.test(relative)) {
       if (/(?:sk-[A-Za-z0-9_-]{16,}|hf_[A-Za-z0-9]{16,}|gh[pousr]_[A-Za-z0-9]{16,}|https?:\/\/(?:api)?joyspace\.jd\.com)/.test(content.toString())) throw new Error(`检测到敏感信息：${relative}`);
     }
     files.set(PREFIX + relative, content);
