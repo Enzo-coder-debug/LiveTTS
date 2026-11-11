@@ -27,6 +27,14 @@ short_description: Your words, brought to life. A LiveTTS research playground.
 
 发布时保留原来的模型仓库不变。后续可以迁移到有资格创建 Docker Space 的账号/套餐，或另行部署受保护的服务端代理。不要在静态 JavaScript、普通 Space Variables 或公开仓库中填写 API 密钥。
 
+## GitHub Pages 前端
+
+访问 [Speech Studio 界面预览](https://enzo-coder-debug.github.io/LiveTTS/playground/)。原有模型官网与预生成样音继续保留在网站根路径。
+
+仓库工作流 `.github/workflows/livetts-pages.yml` 运行静态构建，将 `index.html` 与三个 `static/` 资源部署至 `/LiveTTS/playground/`。前端源文件或构建脚本更新后自动重新部署；本地对应的工作流副本为 `livetts-github/deployment/pages-monorepo.yml`。
+
+Pages 不发布 Docker/FastAPI 后端、密钥、权重或本地生成记录。当前体验页的合成与播放按钮保持禁用，输入文字不发送到 API，也不消耗合成额度；静态页面的内容安全策略禁止网络 API 连接。后续接入后端时，需同时配置前端 API 地址、内容安全策略与后端鉴权，并完成真实联调。
+
 ## 本地运行
 
 Python 3.12+。在本目录运行：

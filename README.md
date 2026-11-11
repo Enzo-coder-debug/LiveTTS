@@ -6,7 +6,7 @@
 
 让每一句话，都有真人的温度。
 
-[模型主页](https://enzo-coder-debug.github.io/LiveTTS/) · [音频试听](https://enzo-coder-debug.github.io/LiveTTS/#demo) · [Hugging Face](https://huggingface.co/spaces/Enzo-coder-debug/LiveTTS) · [交流与合作](https://github.com/Enzo-coder-debug/LiveTTS/issues)
+[模型主页](https://enzo-coder-debug.github.io/LiveTTS/) · [音频试听](https://enzo-coder-debug.github.io/LiveTTS/#demo) · [Speech Studio 界面预览](https://enzo-coder-debug.github.io/LiveTTS/playground/) · [Hugging Face](https://huggingface.co/spaces/Enzo-coder-debug/LiveTTS) · [交流与合作](https://github.com/Enzo-coder-debug/LiveTTS/issues)
 
 </div>
 
@@ -40,6 +40,8 @@ LiveTTS 的核心设计是**将音色与表达能力解耦**：同一个音色�
 前往 **[模型主页的效果展示](https://enzo-coder-debug.github.io/LiveTTS/#demo)**，试听不同语言、方言、情绪、语速以及长篇表达、中文拼读等示例，并查看对应文案与生成设置。
 
 当前公开样音以预置音色为主，用于展示不同表达能力，**不等同于零样本克隆对照实验**。公开展示页提供预生成音频试听；在线 API 接入需另行联系团队。
+
+[Speech Studio](https://enzo-coder-debug.github.io/LiveTTS/playground/) 提供独立的中英文语音体验界面预览。**目前仅部署前端，未接入模型 API；不生成语音，音频区域为空占位。** 接入真实生成需要另行部署保存密钥、实施鉴权与调用限额的后端。
 
 ## 应用场景
 
